@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        
+        _movePosition = transform.position;
     }
 
     void Update()
