@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
-    float _moveSpeed = 5f;
-    float _rotationSpeed = 720f;
+    [SerializeField] float _moveSpeed = 5f;
+    [SerializeField] float _rotationSpeed = 720f;
 
     [SerializeField] bool _canInteract = false;
 
@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     InteractiveObject _interactiveObject = null;
 
     Stack<PickableObject> _pickables = new Stack<PickableObject>();
+
+    [SerializeField] Animator _animator = null;
 
     void Start()
     {
@@ -75,6 +77,8 @@ public class Player : MonoBehaviour
             Quaternion towardsRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
             _rb.rotation = Quaternion.RotateTowards(transform.rotation, towardsRotation, _rotationSpeed * Time.fixedDeltaTime);
         }
+
+        _animator.SetBool("Moving", moveDirection != Vector3.zero);
     }
 
     public void AddToStack(PickableObject pickable)
