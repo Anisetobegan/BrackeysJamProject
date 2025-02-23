@@ -4,7 +4,7 @@ using UnityEngine;
 public class Oven : InteractiveObject
 {
     [SerializeField] List<PickableObject> preppedIngredients = new List<PickableObject>();
-    FinishedDish finishedDish = null;
+    FinishDish finishedDish = null;
 
     float timer = 5f;
     bool isCooking = false;
@@ -72,7 +72,7 @@ public class Oven : InteractiveObject
 
         for (int i = 0; i < preppedIngredients.Count; i++)
         {
-            finishedDish.AddIngredient(preppedIngredients[i]);
+            //finishedDish.AddIngredient(preppedIngredients[i]);
         }
     }
 }

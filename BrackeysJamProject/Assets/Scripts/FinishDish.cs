@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class FinishedDish : PickableObject
+public class FinishDish : PickableObject
 {
     Dictionary<string, int> cookedIngredients = new Dictionary<string, int>();
+
+    List<PickableObject> ingredients = new List<PickableObject>();
 
     void Start()
     {
@@ -17,18 +19,29 @@ public class FinishedDish : PickableObject
 
     public override void OnInteract()
     {
+        Oven oven = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<Oven>();
         Window window = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<Window>();
+
+        if (oven != null)
+        {
+
+        }
 
         if (window != null)
         {
-            if (CheckCorrectIngredients())
+            /*if (CheckCorrectIngredients())
             {
                 window.OrderComplete();
-            }
+            }*/
         }
     }
 
-    public void GetFromDictionary(string name)
+    public void PickUpIngredient(PickableObject ingredient)
+    {
+        ingredients.Add(ingredient);
+    }
+
+    /*public void GetFromDictionary(string name)
     {
         if (cookedIngredients.ContainsKey(name))
         {
@@ -69,5 +82,5 @@ public class FinishedDish : PickableObject
         }
 
         return false;
-    }
+    }*/
 }
