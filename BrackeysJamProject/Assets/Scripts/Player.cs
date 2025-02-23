@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     [SerializeField] Transform _pickablePos = null;
     public Transform PickablePos { get => _pickablePos; }
 
+    public int PickablesAmount { get => _pickables.Count; }
+
     public InteractiveObject InteractiveObject { get { return _interactiveObject; } }
 
     void Start()
