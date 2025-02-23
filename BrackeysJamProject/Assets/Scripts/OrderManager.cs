@@ -43,7 +43,7 @@ public class OrderManager : MonoBehaviour
         }
         else if (orderTimer < 0)
         {
-            PickUpOrder();
+            //PickUpOrder();
             orderTimer = 5f;
         }
     }

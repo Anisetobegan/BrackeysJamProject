@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Potatoe : PickableObject
 {
-    [SerializeField] IngredientInfo _info;
 
-    void Awake()
+    virtual protected void Awake()
     {
         stackable = true;
         pickedUp = false;
@@ -24,7 +23,7 @@ public class Potatoe : PickableObject
         transform.DOMoveZ(playerPos.z, 0.2f).SetEase(Ease.Linear).OnComplete(() => PickUp());*/
     }
 
-    void Update()
+    protected void Update()
     {
         if (pickedUp)
         {
@@ -36,6 +35,7 @@ public class Potatoe : PickableObject
     {
         Table table = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<Table>();
         PotatoesCrate potatoeCrate = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<PotatoesCrate>();
+        Oven oven = GameManager.Instance.PlayerGet.InteractiveObject.GetComponentInParent<Oven>();
 
         if (table != null)
         {
@@ -47,6 +47,12 @@ public class Potatoe : PickableObject
         {
             Potatoe newPotatoe = Instantiate(this, potatoeCrate.transform.position, potatoeCrate.transform.rotation);
             GameManager.Instance.PlayerGet.AddToStack(newPotatoe);
+        }
+
+        if (oven != null)
+        {
+            oven.AddIngredient(this);
+            GameManager.Instance.PlayerGet.RemoveFromStack();
         }
     }
 }

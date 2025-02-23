@@ -98,6 +98,7 @@ public class Order : MonoBehaviour
     public void DishCompleted()
     {
         _dishComplete = true;
+        Debug.Log("Order Completed!");
         //Remove order from the UI
     }
 

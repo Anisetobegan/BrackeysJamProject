@@ -735,21 +735,26 @@ MonoBehaviour:
   dishRecipes:
   - dishName: French Fries
     ingredientList:
-    - Potatoes
+    - Potatoe
   - dishName: Pizza
     ingredientList:
     - Cheese
-    - Tomatoes
+    - Tomatoe
   - dishName: Hamburger
     ingredientList:
     - Meat
     - Bread
+  - dishName: Steak & Fries
+    ingredientList:
+    - Meat
+    - FrenchFry
   ingredientInfoList:
   - {fileID: 11400000, guid: 5bce507793aa0894ca6ee5f87649fa99, type: 2}
   - {fileID: 11400000, guid: 84568281e9e1c664dbcb240e0204d71b, type: 2}
   - {fileID: 11400000, guid: 9464aeaeb4cd472448cdb3e6a9ea21b4, type: 2}
   - {fileID: 11400000, guid: aefde47c8ef162c41aaa90f07943c502, type: 2}
   - {fileID: 11400000, guid: 3796e960a5c9ffb45b1a6ea29ccb666e, type: 2}
+  - {fileID: 11400000, guid: b6b66f3f5e0728f41970ba2c00a87e89, type: 2}
   orderPrefab: {fileID: 598166961898291932, guid: b6b5e768147a92946a1d6f7fba3fa7e4, type: 3}
   layoutGroup: {fileID: 1591723951}
 --- !u!4 &912894264

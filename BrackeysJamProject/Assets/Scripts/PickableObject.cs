@@ -7,8 +7,9 @@ public class PickableObject : MonoBehaviour, IInteractable
     protected bool pickedUp;
     protected bool isPrepped;
     protected int prepAmount;
-
-
+    
+    [SerializeField] protected IngredientInfo _ingredientInfo;
+    
     [SerializeField] protected PickableObject _preppedIngredientPrefab;
 
     protected Collider trigger = null;
@@ -24,6 +25,7 @@ public class PickableObject : MonoBehaviour, IInteractable
     public bool IsPickedUp { get { return pickedUp; } }
     public int PrepAmount { get { return prepAmount; } }
     public PickableObject PreppedIngredientPrefab { get { return _preppedIngredientPrefab; } }
+    public IngredientInfo Info {  get { return _ingredientInfo; } }
 
     void Start()
     {

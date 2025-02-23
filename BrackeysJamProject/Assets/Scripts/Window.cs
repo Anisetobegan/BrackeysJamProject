@@ -17,4 +17,9 @@ public class Window : InteractiveObject
     {
         Debug.Log($"Interacted with: {this}");
     }
+
+    public void OrderComplete()
+    {
+        OrderManager.Instance.CurrentOrders[0].DishCompleted();
+    }
 }
