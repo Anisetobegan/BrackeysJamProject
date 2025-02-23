@@ -1,4 +1,5 @@
 using DG.Tweening;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Potatoe : PickableObject
@@ -10,6 +11,7 @@ public class Potatoe : PickableObject
         stackable = true;
         pickedUp = false;
         isPrepped = false;
+        prepAmount = 5;
 
         type = ObjectType.Ingredient;
         
@@ -28,5 +30,23 @@ public class Potatoe : PickableObject
         {
             transform.position = GameManager.Instance.PlayerGet.transform.position;
         }
-    }    
+    }
+
+    public override void OnInteract()
+    {
+        Table table = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<Table>();
+        PotatoesCrate potatoeCrate = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<PotatoesCrate>();
+
+        if (table != null)
+        {
+            table.AddIngredient(this);
+            GameManager.Instance.PlayerGet.RemoveFromStack();
+        }
+
+        if (potatoeCrate != null)
+        {
+            Potatoe newPotatoe = Instantiate(this, potatoeCrate.transform.position, potatoeCrate.transform.rotation);
+            GameManager.Instance.PlayerGet.AddToStack(newPotatoe);
+        }
+    }
 }

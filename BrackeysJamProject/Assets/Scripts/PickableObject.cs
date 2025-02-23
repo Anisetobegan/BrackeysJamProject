@@ -6,6 +6,10 @@ public class PickableObject : MonoBehaviour, IInteractable
     protected bool stackable;
     protected bool pickedUp;
     protected bool isPrepped;
+    protected int prepAmount;
+
+
+    [SerializeField] protected PickableObject _preppedIngredientPrefab;
 
     protected Collider trigger = null;
 
@@ -18,6 +22,8 @@ public class PickableObject : MonoBehaviour, IInteractable
 
     public bool IsStackable { get { return stackable; } }
     public bool IsPickedUp { get { return pickedUp; } }
+    public int PrepAmount { get { return prepAmount; } }
+    public PickableObject PreppedIngredientPrefab { get { return _preppedIngredientPrefab; } }
 
     void Start()
     {
@@ -68,6 +74,16 @@ public class PickableObject : MonoBehaviour, IInteractable
                 PickUp();
             }            
         });
+    }
+
+    public void IngredientPrepped()
+    {
+        prepAmount--;
+    }
+
+    public void DestroyIngredient()
+    {
+        Destroy(gameObject);
     }
 
     virtual public void OnInteract()

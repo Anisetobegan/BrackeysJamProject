@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] Animator _animator = null;
 
+    public InteractiveObject InteractiveObject { get { return _interactiveObject; } }
+
     void Start()
     {
         _movePosition = transform.position;
@@ -30,29 +32,26 @@ public class Player : MonoBehaviour
     {
         Move();
 
-        if (Input.GetMouseButtonDown(0) && _canInteract)
+        if (Input.GetMouseButtonDown(0))
         {
-            if (_interactable != null)
+            if (_canInteract)
             {
-                if (_pickables.Count > 0)
-                {
-                    if (CheckIfStackable())
-                    {
-                        _interactable.OnInteract();
-                    }
-                }
-                else
+                if (_interactable != null)
                 {
                     _interactable.OnInteract();
-                }                
-            }
-        }
-        else if ( Input.GetMouseButtonDown(0) && !_canInteract)
-        {
-            if (!CheckIfStackable())
+                }
+                else if (_interactiveObject != null)
+                {
+                    _interactiveObject.OnInteract();
+                }
+            }        
+            else
             {
-                _pickables.Peek().Drop();
-                RemoveFromStack(_pickables.Peek());
+                if (!CheckIfStackable())
+                {
+                    _pickables.Peek().Drop();
+                    RemoveFromStack();
+                }
             }
         }
     }
@@ -107,13 +106,21 @@ public class Player : MonoBehaviour
                 _pickables.Push(pickable);
             }//If false, do nothing
         }
-        _interactable = pickable;
+        _interactable = _pickables.Peek();
     }
 
-    public void RemoveFromStack(PickableObject pickable)
+    public void RemoveFromStack()
     {
-        _pickables.Pop();
-        pickable.Drop();
+        _pickables.Pop().Drop();
+        
+        if (_pickables.Count == 0)
+        {
+            _interactable = null;
+            return;
+        }
+        _interactable = _pickables.Peek();
+
+        Debug.Log(_pickables.Count);
     }
 
     bool CheckIfStackable()
@@ -126,9 +133,12 @@ public class Player : MonoBehaviour
     }
 
     public void CanInteract()
-    {
-        _interactable = null;
+    {        
         _canInteract = !_canInteract;
+        /*if (!_canInteract)
+        {
+            _interactable = null;
+        }*/
     }
 
     public PickableObject PutDownIngredient()
@@ -155,7 +165,8 @@ public class Player : MonoBehaviour
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("Pickable"))
         {
-            _canInteract = true;            
+            _canInteract = true;
+            _interactable = other.GetComponent<PickableObject>();
             /*
             //IPickable pickable = other.GetComponent<IPickable>();
             PickableObject pickable = other.GetComponent<PickableObject>();
@@ -192,7 +203,15 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        _canInteract = false;
-        _interactable = null;
+        if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+        {
+            _canInteract = false;
+            _interactiveObject = null;
+        }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Pickable"))
+        {
+            _canInteract = false;
+            _interactable = null;
+        }
     }
 }
