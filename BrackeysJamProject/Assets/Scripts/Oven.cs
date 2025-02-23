@@ -44,13 +44,13 @@ public class Oven : InteractiveObject
 
     public override void OnInteract()
     {
-        if (!isCooking)
+        /*if (!isCooking)
         {
             StartCooking();
             return;
         }
 
-        isCooking = false;
+        isCooking = false;*/
         //PickUpFinishedDish();
     }
 
@@ -60,22 +60,31 @@ public class Oven : InteractiveObject
         pickable.ObjectAnimation(transform.position, pickable.IsPickedUp);
     }
 
-    public void PickPreppedIngredients()
+    public List<PickableObject> PickCookedIngredients()
     {
+        List<PickableObject> cookedIngredients = new List<PickableObject>();
+
         for (int i = 0; i < preppedIngredients.Count; i++)
         {
             PickableObject ingredientToPick = preppedIngredients[i];
-            GameManager.Instance.PlayerGet.AddToStack(ingredientToPick);
+            cookedIngredients.Add(ingredientToPick);
             ingredientToPick.ObjectAnimation(GameManager.Instance.PlayerGet.transform.position, ingredientToPick.IsPickedUp);
         }
         preppedIngredients.Clear();
         isCooking = false;
         timer = 5f;
+        Debug.Log(doneness);
+        doneness = Doneness.Raw;
+        return cookedIngredients;
     }
 
     public void StartCooking()
     {
-        isCooking = true;
+        if (preppedIngredients.Count > 0)
+        {
+            isCooking = true;
+            Debug.Log("Started cooking");
+        }
     }
 
     public override void OnTriggerLeave()

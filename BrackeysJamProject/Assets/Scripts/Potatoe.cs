@@ -12,7 +12,7 @@ public class Potatoe : PickableObject
         stackable = true;
         pickedUp = false;
         isPrepped = false;
-        prepAmount = 12;
+        prepAmount = 5;
 
         type = ObjectType.Ingredient;
 
@@ -47,7 +47,7 @@ public class Potatoe : PickableObject
 
         if (potatoeCrate != null)
         {
-            Potatoe newPotatoe = Instantiate(this, potatoeCrate.transform.position, potatoeCrate.transform.rotation);
+            Potatoe newPotatoe = Instantiate(potatoeCrate.PotatoePrefab, potatoeCrate.transform.position, potatoeCrate.transform.rotation);
             GameManager.Instance.PlayerGet.AddToStack(newPotatoe);
         }
 

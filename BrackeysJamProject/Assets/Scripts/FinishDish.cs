@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class FinishDish : PickableObject
 {
-    //Dictionary<string, int> cookedIngredients = new Dictionary<string, int>();
+    Dictionary<string, int> cookedIngredients = new Dictionary<string, int>();
 
     [SerializeField] List<PickableObject> ingredients = new List<PickableObject>();
 
@@ -39,9 +39,16 @@ public class FinishDish : PickableObject
         }
         else
         {
+            PotatoesCrate potatoeCrate = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<PotatoesCrate>();
             Table table = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<Table>();
             Oven oven = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<Oven>();
             Window window = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<Window>();
+
+            if (potatoeCrate != null)
+            {
+                Potatoe newPotatoe = Instantiate(potatoeCrate.PotatoePrefab, potatoeCrate.transform.position, potatoeCrate.transform.rotation);
+                ingredients.Add(newPotatoe);
+            }
 
             if (table != null)
             {
@@ -57,7 +64,8 @@ public class FinishDish : PickableObject
             {
                 if (oven.IsCooking)
                 {
-                    oven.PickPreppedIngredients();
+                    ingredients = oven.PickCookedIngredients();
+                    AddIngredientsToDictionary();
                 }
                 else
                 {
@@ -78,10 +86,10 @@ public class FinishDish : PickableObject
 
             if (window != null)
             {
-                /*if (CheckCorrectIngredients())
+                if (CheckCorrectIngredients())
                 {
                     window.OrderComplete();
-                }*/
+                }
             }
         }
     }
@@ -91,7 +99,7 @@ public class FinishDish : PickableObject
         ingredients.Add(ingredient);
     }
 
-    /*public void GetFromDictionary(string name)
+    public void GetFromDictionary(string name)
     {
         if (cookedIngredients.ContainsKey(name))
         {
@@ -102,11 +110,13 @@ public class FinishDish : PickableObject
         cookedIngredients.Add(name, 1);
     }
 
-    public void AddIngredient(PickableObject ingredient)
+    public void AddIngredientsToDictionary()
     {
-        string ingredientName = ingredient.Info.Name;
-
-        GetFromDictionary(ingredientName);
+        foreach (var ingredient in ingredients)
+        {
+            string ingredientName = ingredient.Info.Name;
+            GetFromDictionary(ingredientName);
+        }
     }
 
     public bool CheckCorrectIngredients()
@@ -132,5 +142,5 @@ public class FinishDish : PickableObject
         }
 
         return false;
-    }*/
+    }
 }

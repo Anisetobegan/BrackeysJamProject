@@ -5,6 +5,8 @@ public class PotatoesCrate : InteractiveObject
 {
     [SerializeField] Potatoe _potatoePrefab;
 
+    public Potatoe PotatoePrefab {  get { return _potatoePrefab; } }
+
     void Start()
     {
         

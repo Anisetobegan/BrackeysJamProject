@@ -63,10 +63,6 @@ public class Order : MonoBehaviour
             CalculateTimer();
             DishFailed();
         }
-        else
-        {
-            DishCompleted();
-        }
     }
 
     public void InitializeOrder(DishRecipe recipe)
