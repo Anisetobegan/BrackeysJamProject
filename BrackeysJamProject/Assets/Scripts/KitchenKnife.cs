@@ -30,7 +30,7 @@ public class KitchenKnife : PickableObject
         {
             GameManager.Instance.PlayerGet.AddToStack(this);
             GameManager.Instance.PlayerGet.CanInteract();
-            ObjectAnimation(GameManager.Instance.PlayerGet.transform.position, pickedUp);
+            ObjectAnimation(GameManager.Instance.PlayerGet.PickablePos.position, pickedUp);
         }
         else
         {

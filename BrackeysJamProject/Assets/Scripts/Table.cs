@@ -8,6 +8,8 @@ public class Table : InteractiveObject
     [SerializeField] List<PickableObject> ingredientsToPrep = new List<PickableObject>();
     [SerializeField] List<PickableObject> preppedIngredients = new List<PickableObject>();
 
+    [SerializeField] Transform pickablePos;
+
     void Start()
     {
         
@@ -48,7 +50,7 @@ public class Table : InteractiveObject
     public void AddIngredient(PickableObject pickable)
     {
         ingredientsToPrep.Add(pickable);
-        pickable.ObjectAnimation(transform.position, pickable.IsPickedUp);
+        pickable.ObjectAnimation(CalculatePickedPositionOffset() + pickablePos.position, pickable.IsPickedUp);
     }
 
     public void RemoveIngredient(PickableObject pickable)
@@ -91,5 +93,16 @@ public class Table : InteractiveObject
             GameManager.Instance.PlayerGet.AddToStack(ingredientToPick);
             ingredientToPick.ObjectAnimation(GameManager.Instance.PlayerGet.transform.position, ingredientToPick.IsPickedUp);
         }
+    }
+
+    private Vector3 CalculatePickedPositionOffset()
+    {
+        Vector3 pos = Vector3.zero;
+        Vector2 circ = Random.insideUnitCircle * 0.5f;
+        pos = new Vector3(circ.x, 0, circ.y) + GameManager.Instance.PlayerGet.PickablePos.position + (Vector3.up * 0.5f * Mathf.FloorToInt(GameManager.Instance.PlayerGet.PickablesAmount / 5));
+
+        pos = pos - GameManager.Instance.PlayerGet.PickablePos.position;
+
+        return pos;
     }
 }
