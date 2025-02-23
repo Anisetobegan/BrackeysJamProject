@@ -84,7 +84,7 @@ public class PickableObject : MonoBehaviour, IInteractable
     public void DestroyIngredient()
     {
         Destroy(gameObject);
-    }
+    }    
 
     virtual public void OnInteract()
     {

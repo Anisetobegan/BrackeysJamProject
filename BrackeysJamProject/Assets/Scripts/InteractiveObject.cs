@@ -17,4 +17,9 @@ public class InteractiveObject : MonoBehaviour, IInteractable
     {
         
     }
+
+    virtual public void OnTriggerLeave()
+    {
+
+    }
 }

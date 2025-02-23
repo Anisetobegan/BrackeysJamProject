@@ -9,6 +9,8 @@ public class Oven : InteractiveObject
     float timer = 5f;
     bool isCooking = false;
 
+    public bool IsCooking {  get { return isCooking; } }
+
     enum Doneness
     {
         Raw,
@@ -49,7 +51,7 @@ public class Oven : InteractiveObject
         }
 
         isCooking = false;
-        PickFinishedDish();
+        //PickUpFinishedDish();
     }
 
     public void AddIngredient(PickableObject pickable)
@@ -58,21 +60,26 @@ public class Oven : InteractiveObject
         pickable.ObjectAnimation(transform.position, pickable.IsPickedUp);
     }
 
-    public void PickFinishedDish()
+    public void PickPreppedIngredients()
     {
-        
-        GameManager.Instance.PlayerGet.AddToStack(finishedDish);
-        finishedDish.ObjectAnimation(GameManager.Instance.PlayerGet.transform.position, finishedDish.IsPickedUp);
-        finishedDish = null;    
+        for (int i = 0; i < preppedIngredients.Count; i++)
+        {
+            PickableObject ingredientToPick = preppedIngredients[i];
+            GameManager.Instance.PlayerGet.AddToStack(ingredientToPick);
+            ingredientToPick.ObjectAnimation(GameManager.Instance.PlayerGet.transform.position, ingredientToPick.IsPickedUp);
+        }
+        preppedIngredients.Clear();
+        isCooking = false;
+        timer = 5f;
     }
 
     public void StartCooking()
     {
         isCooking = true;
+    }
 
-        for (int i = 0; i < preppedIngredients.Count; i++)
-        {
-            //finishedDish.AddIngredient(preppedIngredients[i]);
-        }
+    public override void OnTriggerLeave()
+    {
+        StartCooking();
     }
 }

@@ -20,11 +20,11 @@ public class Table : InteractiveObject
 
     public override void OnInteract()
     {
-        if (preppedIngredients.Count > 0 && ingredientsToPrep.Count == 0)
+        /*if (preppedIngredients.Count > 0 && ingredientsToPrep.Count == 0)
         {
             PickPreppedIngredient();
         }
-        /*PickableObject newObject = GameManager.Instance.PlayerGet.PutDownIngredient();
+        PickableObject newObject = GameManager.Instance.PlayerGet.PutDownIngredient();
 
         if (newObject != null)
         {
@@ -51,6 +51,11 @@ public class Table : InteractiveObject
         pickable.ObjectAnimation(transform.position, pickable.IsPickedUp);
     }
 
+    public void RemoveIngredient(PickableObject pickable)
+    {
+        ingredientsToPrep.Remove(pickable);
+    }
+
     public void PrepIngredient()
     {
         if (ingredientsToPrep.Count > 0)
@@ -74,12 +79,17 @@ public class Table : InteractiveObject
 
     public void PickPreppedIngredient()
     {
-        PickableObject ingredientToPick = null;
-        List<PickableObject> reversedList = new List<PickableObject>(preppedIngredients);
-        reversedList.Reverse();
-        ingredientToPick = reversedList[0];
-        preppedIngredients.Remove(ingredientToPick);
-        GameManager.Instance.PlayerGet.AddToStack(ingredientToPick);
-        ingredientToPick.ObjectAnimation(GameManager.Instance.PlayerGet.transform.position, ingredientToPick.IsPickedUp);
+        if (preppedIngredients.Count > 0)
+        {
+            PickableObject ingredientToPick = null;
+            List<PickableObject> reversedList = new List<PickableObject>(preppedIngredients);
+            reversedList.Reverse();
+
+            ingredientToPick = reversedList[0];
+            preppedIngredients.Remove(ingredientToPick);
+
+            GameManager.Instance.PlayerGet.AddToStack(ingredientToPick);
+            ingredientToPick.ObjectAnimation(GameManager.Instance.PlayerGet.transform.position, ingredientToPick.IsPickedUp);
+        }
     }
 }

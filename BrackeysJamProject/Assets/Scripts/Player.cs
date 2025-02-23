@@ -140,10 +140,6 @@ public class Player : MonoBehaviour
     public void CanInteract()
     {        
         _canInteract = !_canInteract;
-        /*if (!_canInteract)
-        {
-            _interactable = null;
-        }*/
     }
 
     public PickableObject PutDownIngredient()
@@ -211,6 +207,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
         {
             _canInteract = false;
+            _interactiveObject.OnTriggerLeave();
             _interactiveObject = null;
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("Pickable"))
