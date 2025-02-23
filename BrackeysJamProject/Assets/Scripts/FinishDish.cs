@@ -5,7 +5,7 @@ public class FinishDish : PickableObject
 {
     //Dictionary<string, int> cookedIngredients = new Dictionary<string, int>();
 
-    List<PickableObject> ingredients = new List<PickableObject>();
+    [SerializeField] List<PickableObject> ingredients = new List<PickableObject>();
 
     void Awake()
     {
@@ -45,7 +45,12 @@ public class FinishDish : PickableObject
 
             if (table != null)
             {
-                table.PickPreppedIngredient();
+                PickableObject ingredientToPick = null;
+                ingredientToPick = table.PickPreppedIngredient();
+                if (ingredientToPick != null)
+                {
+                    ingredients.Add(ingredientToPick);
+                }
             }
 
             if (oven != null)
@@ -56,14 +61,18 @@ public class FinishDish : PickableObject
                 }
                 else
                 {
-                    PickableObject ingredientToAdd = null;
-                    List<PickableObject> reverseList = new List<PickableObject>(ingredients);
-                    reverseList.Reverse();
-                    ingredientToAdd = reverseList[0];
+                    if (ingredients.Count > 0)
+                    {
+                        PickableObject ingredientToAdd = null;
+                        List<PickableObject> reverseList = new List<PickableObject>(ingredients);
+                        reverseList.Reverse();
+                        ingredientToAdd = reverseList[0];
+                        ingredients.Remove(ingredientToAdd);
 
-                    oven.AddIngredient(ingredientToAdd);
+                        oven.AddIngredient(ingredientToAdd);
 
-                    GameManager.Instance.PlayerGet.RemoveFromStack();
+                        //GameManager.Instance.PlayerGet.RemoveFromStack();
+                    }
                 }
             }
 

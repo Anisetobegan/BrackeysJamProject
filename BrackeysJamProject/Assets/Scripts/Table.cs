@@ -79,7 +79,7 @@ public class Table : InteractiveObject
         }
     }
 
-    public void PickPreppedIngredient()
+    public PickableObject PickPreppedIngredient()
     {
         if (preppedIngredients.Count > 0)
         {
@@ -90,9 +90,13 @@ public class Table : InteractiveObject
             ingredientToPick = reversedList[0];
             preppedIngredients.Remove(ingredientToPick);
 
-            GameManager.Instance.PlayerGet.AddToStack(ingredientToPick);
+            //GameManager.Instance.PlayerGet.AddToStack(ingredientToPick);
+
             ingredientToPick.ObjectAnimation(GameManager.Instance.PlayerGet.transform.position, ingredientToPick.IsPickedUp);
+
+            return ingredientToPick;
         }
+        return null;
     }
 
     private Vector3 CalculatePickedPositionOffset()
