@@ -65,9 +65,7 @@ public class PickableObject : MonoBehaviour, IInteractable
 
     public void ObjectAnimation(Vector3 endPos, bool isPicked)
     {
-        transform.DOMoveX(endPos.x, 0.2f).SetEase(Ease.Linear);
-        transform.DOMoveY(endPos.y + 1f, 0.2f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
-        transform.DOMoveZ(endPos.z, 0.2f).SetEase(Ease.Linear).OnComplete(() => 
+        transform.DOJump(endPos, 2, 1, 0.2f).OnComplete(() =>
         {
             if (!isPicked)
             {

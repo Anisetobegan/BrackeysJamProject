@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] Animator _animator = null;
 
+    [SerializeField] Transform _pickablePos = null;
+    public Transform PickablePos { get => _pickablePos; }
+
     public InteractiveObject InteractiveObject { get { return _interactiveObject; } }
 
     void Start()
@@ -54,6 +57,8 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        _animator.SetBool("HasPickable", _pickables.Count > 0);
     }
 
     private void FixedUpdate()

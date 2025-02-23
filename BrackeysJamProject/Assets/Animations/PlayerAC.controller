@@ -417,7 +417,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Player_Run_Full
-  m_Speed: 1
+  m_Speed: 1.75
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4909698143214075293}
