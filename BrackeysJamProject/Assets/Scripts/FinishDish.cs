@@ -78,7 +78,8 @@ public class FinishDish : PickableObject
                         ingredientToAdd = reverseList[0];
                         ingredients.Remove(ingredientToAdd);
 
-                        oven.AddIngredient(ingredientToAdd);                        
+                        oven.AddIngredient(ingredientToAdd);
+                        ingredientToAdd.Drop();
 
                         //GameManager.Instance.PlayerGet.RemoveFromStack();
                     }
