@@ -65,6 +65,7 @@ public class FinishDish : PickableObject
                 if (oven.IsCooking)
                 {
                     ingredients = oven.PickCookedIngredients();
+                    oven.FinishCooking();
                     AddIngredientsToDictionary();
                 }
                 else
@@ -77,7 +78,7 @@ public class FinishDish : PickableObject
                         ingredientToAdd = reverseList[0];
                         ingredients.Remove(ingredientToAdd);
 
-                        oven.AddIngredient(ingredientToAdd);
+                        oven.AddIngredient(ingredientToAdd);                        
 
                         //GameManager.Instance.PlayerGet.RemoveFromStack();
                     }
