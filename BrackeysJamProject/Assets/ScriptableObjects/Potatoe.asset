@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5879cd522a63694e81cc47066754265, type: 3}
   m_Name: Potatoe
   m_EditorClassIdentifier: 
-  Name: Potatoes
+  Name: Potatoe
   icon: {fileID: 0}
