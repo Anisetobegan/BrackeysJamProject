@@ -6,11 +6,12 @@ using UnityEngine;
 public class OrderManager : MonoBehaviour
 {
     float orderTimer = 5f;
+    float timer;
 
     [SerializeField] List<DishRecipe> dishRecipes;
     [SerializeField] List<IngredientInfo> ingredientInfoList;
-    [SerializeField] Order orderPrefab;
-    [SerializeField] Transform layoutGroup;
+    //[SerializeField] Order orderPrefab;
+    //[SerializeField] Transform layoutGroup;
 
     List<Order> currentOrders = new List<Order>();
 
@@ -32,28 +33,29 @@ public class OrderManager : MonoBehaviour
     }
     private void Start()
     {
+        timer = orderTimer;
         PickUpOrder();
     }
 
     private void Update()
     {
-        if (orderTimer > 0)
+        if (timer > 0)
         {
-            orderTimer -= Time.deltaTime;
+            timer -= Time.deltaTime;
         }
-        else if (orderTimer < 0)
+        else if (timer < 0)
         {
-            //PickUpOrder();
-            orderTimer = 5f;
+            PickUpOrder();
+            timer = orderTimer;
         }
     }
 
     public void PickUpOrder()
     {
         int index = UnityEngine.Random.Range(0, dishRecipes.Count);
-        //Order newOrder = new Order(dishRecipes[index]);
+        /*Order newOrder = new Order(dishRecipes[index]);
         Order newOrder = Instantiate(orderPrefab, layoutGroup);
-        newOrder.InitializeOrder(dishRecipes[index]);
-        currentOrders.Add(newOrder);
+        newOrder.InitializeOrder(dishRecipes[index]);*/
+        currentOrders.Add(UIManager.Instance.CreateNewOrder(dishRecipes[index]));
     }
 }
