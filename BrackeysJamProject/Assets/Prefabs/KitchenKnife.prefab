@@ -67,6 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a1ee31f4fb8004488e65d2d70a7575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ingredientInfo: {fileID: 0}
+  _preppedIngredientPrefab: {fileID: 0}
+  _animationTriggerName: UseKnife
 --- !u!1001 &9097414901053822027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -131,6 +134,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7e13ee837fa975f4aa463daa49b7f3e3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 120404cab25aec343a1455a1a6f9f32a, type: 2}
     - target: {fileID: 919132149155446097, guid: 7e13ee837fa975f4aa463daa49b7f3e3, type: 3}
       propertyPath: m_Name
       value: knife

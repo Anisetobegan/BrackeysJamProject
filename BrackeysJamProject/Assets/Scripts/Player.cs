@@ -30,12 +30,11 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        _movePosition = transform.position;
+        //_movePosition = transform.position;
     }
 
     void Update()
     {
-        Move();
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -44,6 +43,7 @@ public class Player : MonoBehaviour
                 if (_interactable != null)
                 {
                     _interactable.OnInteract();
+                    _animator.SetTrigger((_interactable as PickableObject).GetAnimationTrigger);
                 }
                 else if (_interactiveObject != null)
                 {
@@ -65,7 +65,9 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.MovePosition(_movePosition);
+        Move();
+
+        _rb.linearVelocity = _movePosition;
     }
 
     void Move()
@@ -76,7 +78,8 @@ public class Player : MonoBehaviour
         Vector3 moveDirection = new Vector3(xDirection, 0.0f, zDirection);
         moveDirection.Normalize();
 
-        _movePosition = ((moveDirection * _moveSpeed) * Time.fixedDeltaTime) + _rb.position;
+        //_movePosition = ((moveDirection * _moveSpeed) * Time.fixedDeltaTime) + _rb.position;
+        _movePosition = ((moveDirection * _moveSpeed));
 
         if (moveDirection != Vector3.zero)
         {

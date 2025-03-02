@@ -14,6 +14,9 @@ public class PickableObject : MonoBehaviour, IInteractable
 
     protected Collider trigger = null;
 
+    [SerializeField] private string _animationTriggerName = "";
+    public string GetAnimationTrigger { get => _animationTriggerName; }
+
     protected enum ObjectType
     {
         Ingredient,

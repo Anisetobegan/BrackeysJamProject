@@ -20,7 +20,7 @@ public class KitchenKnife : PickableObject
         if (pickedUp)
         {
             transform.position = GameManager.Instance.PlayerGet.PickablePos.position;
-            transform.rotation = GameManager.Instance.PlayerGet.PickablePos.rotation * Quaternion.Euler(0, -90, -30);
+            transform.rotation = GameManager.Instance.PlayerGet.PickablePos.rotation;
         }
     }
 
