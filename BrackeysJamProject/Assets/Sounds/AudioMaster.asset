@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f12c918f4aaad05449c4c2cc05682fd6, type: 3}
+  m_Name: AudioMaster
+  m_EditorClassIdentifier: 
+  audioGroups:
+  - name: Music
+    volume: 0.5
+    audioContainers:
+    - eventName: NormalMusic
+      volume: 0.5
+      playOnAwake: 1
+      playInSequence: 0
+      sceneIndex: 0
+      audioSfxs:
+      - clip: {fileID: 8300000, guid: e8647d11de6b2b34dbcc66ff9900475d, type: 3}
+        volume: 0.05
+        pitchMax: 1
+        pitchMin: 1
+        spatialSound: 0
+        loop: 1
+        collapsed: 0
+      subscribedEvents: 
+      collapsed: 0
+    audioGroups: []
+    subscribedEvents: 
+    collapsed: 0
+  - name: Effects
+    volume: 0.5
+    audioContainers: []
+    audioGroups:
+    - name: Player
+      volume: 0.5
+      audioContainers:
+      - eventName: Steps
+        volume: 0.5
+        playOnAwake: 0
+        playInSequence: 0
+        sceneIndex: -1
+        audioSfxs:
+        - clip: {fileID: 8300000, guid: 6611ef0f15a0ef345ac388787238525a, type: 3}
+          volume: 0.5
+          pitchMax: 1.2801557
+          pitchMin: 0.76653695
+          spatialSound: 0
+          loop: 0
+          collapsed: 0
+        subscribedEvents: 00000000
+        collapsed: 0
+      audioGroups: []
+      subscribedEvents: 
+      collapsed: 0
+    subscribedEvents: 
+    collapsed: 0
+  audioEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+  audioEventNames:
+  - OnPlayerStep
+  eventsCollapsed: 0
