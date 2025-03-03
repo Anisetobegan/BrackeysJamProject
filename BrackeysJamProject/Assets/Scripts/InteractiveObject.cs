@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InteractiveObject : MonoBehaviour, IInteractable
-{    
+{
+    [SerializeField] protected int itemQuantity;
+    [SerializeField] protected int itemMaxCapacity;
 
     void Start()
     {
@@ -21,5 +24,20 @@ public class InteractiveObject : MonoBehaviour, IInteractable
     virtual public void OnTriggerLeave()
     {
 
+    }
+
+    virtual public bool Refill()
+    {
+        return false;
+    }
+
+    virtual public string GetItemName()
+    {
+        return "";
+    }
+
+    virtual public Image GetItemIcon()
+    {
+        return null;
     }
 }

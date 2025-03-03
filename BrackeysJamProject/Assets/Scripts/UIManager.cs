@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -6,6 +7,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Order orderPrefab;
     [SerializeField] Transform layoutGroup;
     [SerializeField] GameObject storeScreen;
+    [SerializeField] TextMeshProUGUI moneyTMP;
 
     public static UIManager Instance
     {
@@ -27,7 +29,7 @@ public class UIManager : MonoBehaviour
     
     void Start()
     {
-        
+        UpdateMoney(GameManager.Instance.PlayerGet.Money);
     }
 
     void Update()
@@ -52,5 +54,10 @@ public class UIManager : MonoBehaviour
     {
         storeScreen.SetActive(false);
         Time.timeScale = 1;
-    }    
+    }
+
+    public void UpdateMoney(float moneyOwned)
+    {
+        moneyTMP.text = $"${moneyOwned}";
+    }
 }

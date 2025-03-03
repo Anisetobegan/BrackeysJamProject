@@ -1,16 +1,42 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StoreItem : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] InteractiveObject itemContainer;
+    [SerializeField] float itemPrice;
+
+    [SerializeField] TextMeshProUGUI itemNameTMP;
+    [SerializeField] TextMeshProUGUI itemPriceTMP;
+    [SerializeField] Image itemIcon;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    private void Awake()
+    {
+        itemNameTMP.text = itemContainer.GetItemName();
+        itemIcon = itemContainer.GetItemIcon();
+        itemPriceTMP.text = itemPrice.ToString();
+    }
+
     void Update()
     {
         
+    }
+
+    public void BuyItem()
+    {
+        if (GameManager.Instance.PlayerGet.BuyItem(itemPrice))
+        {
+            itemContainer.Refill();
+        }
+        else
+        {
+            Debug.Log("Not enough cash");
+        }
     }
 }

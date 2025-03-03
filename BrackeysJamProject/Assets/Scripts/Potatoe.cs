@@ -47,8 +47,11 @@ public class Potatoe : PickableObject
 
         if (potatoeCrate != null)
         {
-            Potatoe newPotatoe = Instantiate(potatoeCrate.PotatoePrefab, potatoeCrate.transform.position, potatoeCrate.transform.rotation);
-            GameManager.Instance.PlayerGet.AddToStack(newPotatoe);
+            if (potatoeCrate.UseItem())
+            {
+                Potatoe newPotatoe = Instantiate(potatoeCrate.PotatoePrefab, potatoeCrate.transform.position, potatoeCrate.transform.rotation);
+                GameManager.Instance.PlayerGet.AddToStack(newPotatoe);
+            }
         }
 
         if (oven != null)

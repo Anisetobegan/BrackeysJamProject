@@ -2,22 +2,33 @@ using UnityEngine;
 
 public class Wallet
 {
-    float moneyOwned = 0;
+    float moneyOwned;
 
-    public void AddMoney(float moneyEarned)
+    public Wallet()
     {
-        moneyOwned += moneyEarned;
+        moneyOwned = 0;
     }
 
-    public void BuyItem(float itemPrice)
+    public float Money { get { return moneyOwned; } }
+
+    public void AddMoney(float moneyToAdd)
     {
-        if (itemPrice < moneyOwned)
+        moneyOwned += moneyToAdd;
+        UIManager.Instance.UpdateMoney(moneyOwned);
+    }
+
+    public bool TryBuyItem(float itemPrice)
+    {
+        if (itemPrice <= moneyOwned)
         {
             moneyOwned -= itemPrice;
+            UIManager.Instance.UpdateMoney(moneyOwned);
+            return true;
         }
         else
         {
             Debug.Log("Money Insufficient");
+            return false;
         }
     }
 }

@@ -22,11 +22,15 @@ public class Player : MonoBehaviour
     [SerializeField] Animator _animator = null;
 
     [SerializeField] Transform _pickablePos = null;
+
+    Wallet _wallet = new Wallet();
+
     public Transform PickablePos { get => _pickablePos; }
 
     public int PickablesAmount { get => _pickables.Count; }
 
     public InteractiveObject InteractiveObject { get { return _interactiveObject; } }
+    public float Money { get { return _wallet.Money; } }
 
     void Start()
     {
@@ -58,6 +62,11 @@ public class Player : MonoBehaviour
                     RemoveFromStack();
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space)) //Adds money for debug purposes
+        {
+            AddMoney(100f);
         }
 
         _animator.SetBool("HasPickable", _pickables.Count > 0);
@@ -160,6 +169,16 @@ public class Player : MonoBehaviour
             }
         }
         return objectToPutDown;
+    }
+
+    public void AddMoney(float moneyToAdd)
+    {
+        _wallet.AddMoney(moneyToAdd);
+    }
+
+    public bool BuyItem(float itemPrice)
+    {
+        return _wallet.TryBuyItem(itemPrice);
     }
 
     private void OnTriggerEnter(Collider other)
