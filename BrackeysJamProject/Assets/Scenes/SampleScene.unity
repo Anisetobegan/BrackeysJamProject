@@ -809,73 +809,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2858476686058002626, guid: cc16620421a39ba44bac7b515fb5573c, type: 3}
   m_PrefabInstance: {fileID: 3046212115676409614}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &912894262
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 912894264}
-  - component: {fileID: 912894263}
-  m_Layer: 0
-  m_Name: OrderManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &912894263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 912894262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe0b9d5c852669a4a8c9a99c1c125472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dishRecipes:
-  - dishName: French Fries
-    ingredientList:
-    - Potatoe
-  - dishName: Pizza
-    ingredientList:
-    - Cheese
-    - Tomatoe
-  - dishName: Hamburger
-    ingredientList:
-    - Meat
-    - Bread
-  - dishName: Steak & Fries
-    ingredientList:
-    - Meat
-    - FrenchFry
-  ingredientInfoList:
-  - {fileID: 11400000, guid: 5bce507793aa0894ca6ee5f87649fa99, type: 2}
-  - {fileID: 11400000, guid: 84568281e9e1c664dbcb240e0204d71b, type: 2}
-  - {fileID: 11400000, guid: 9464aeaeb4cd472448cdb3e6a9ea21b4, type: 2}
-  - {fileID: 11400000, guid: aefde47c8ef162c41aaa90f07943c502, type: 2}
-  - {fileID: 11400000, guid: 3796e960a5c9ffb45b1a6ea29ccb666e, type: 2}
-  - {fileID: 11400000, guid: b6b66f3f5e0728f41970ba2c00a87e89, type: 2}
---- !u!4 &912894264
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 912894262}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &943081399
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1965,6 +1898,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af90059169c8b274290f29f93506a3eb, type: 3}
+--- !u!1001 &7102937234142029958
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5468416896207704979, guid: d532a03da1931e34f945f0a759534e8d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468416896207704979, guid: d532a03da1931e34f945f0a759534e8d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468416896207704979, guid: d532a03da1931e34f945f0a759534e8d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468416896207704979, guid: d532a03da1931e34f945f0a759534e8d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468416896207704979, guid: d532a03da1931e34f945f0a759534e8d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468416896207704979, guid: d532a03da1931e34f945f0a759534e8d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468416896207704979, guid: d532a03da1931e34f945f0a759534e8d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468416896207704979, guid: d532a03da1931e34f945f0a759534e8d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468416896207704979, guid: d532a03da1931e34f945f0a759534e8d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468416896207704979, guid: d532a03da1931e34f945f0a759534e8d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925481777586520201, guid: d532a03da1931e34f945f0a759534e8d, type: 3}
+      propertyPath: m_Name
+      value: OrderManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d532a03da1931e34f945f0a759534e8d, type: 3}
 --- !u!1001 &7668294732533149216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2268,7 +2258,7 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1803199834}
-  - {fileID: 912894264}
+  - {fileID: 7102937234142029958}
   - {fileID: 1004388186}
   - {fileID: 729640010270644138}
   - {fileID: 2087039196}
