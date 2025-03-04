@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 
 public class Order : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class Order : MonoBehaviour
     [SerializeField] TextMeshProUGUI _timerTMP;
     [SerializeField] TextMeshProUGUI _ingredientTMPPrefab;
     [SerializeField] GameObject _gridLayout;
+
+    Canvas _canvas;
+
+    [SerializeField] Image _bkg;
+    Color _originalBkgColor;
 
     public List<Ingredient> Ingredients { get { return _ingredients; } }
 
@@ -63,6 +69,12 @@ public class Order : MonoBehaviour
             CalculateTimer();
             DishFailed();
         }
+
+        _canvas.sortingOrder = 0 - transform.GetSiblingIndex();
+
+        Color newColor = _originalBkgColor * Mathf.Ceil((float)(transform.GetSiblingIndex() + 1) / 4f).Remap(1f, 10f, 1f, 0f);
+        newColor.a = 1;
+        _bkg.color = newColor;
     }
 
     public void InitializeOrder(DishRecipe recipe)
@@ -82,6 +94,9 @@ public class Order : MonoBehaviour
         _dishNameTMP.text = _recipe.dishName;
 
         CalculateTimer();
+
+        _canvas = GetComponent<Canvas>();
+        _originalBkgColor = _bkg.color;
     }
 
     public void CalculateTimer()
