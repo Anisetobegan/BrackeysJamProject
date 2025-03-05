@@ -26,9 +26,9 @@ public class InteractiveObject : MonoBehaviour, IInteractable
 
     }
 
-    virtual public bool Refill()
+    virtual public void Refill(int quantity, float price)
     {
-        return false;
+        
     }
 
     virtual public string GetItemName()

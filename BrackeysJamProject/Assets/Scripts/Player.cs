@@ -37,6 +37,16 @@ public class Player : MonoBehaviour
         //_movePosition = transform.position;
     }
 
+    private void OnEnable()
+    {
+        Actions.OnItemRefund += CalculateRefund;
+    }
+
+    private void OnDisable()
+    {
+        Actions.OnItemRefund -= CalculateRefund;
+    }
+
     void Update()
     {
 
@@ -179,6 +189,11 @@ public class Player : MonoBehaviour
     public bool BuyItem(float itemPrice)
     {
         return _wallet.TryBuyItem(itemPrice);
+    }
+
+    public void CalculateRefund(int quantity, float price)
+    {
+        _wallet.AddMoney(price * quantity);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -25,10 +25,6 @@ public class Wallet
             UIManager.Instance.UpdateMoney(moneyOwned);
             return true;
         }
-        else
-        {
-            Debug.Log("Money Insufficient");
-            return false;
-        }
+        return false;
     }
 }

@@ -56,13 +56,28 @@ public class PotatoesCrate : InteractiveObject
         return _potatoePrefab.Info.icon;
     }
 
-    public override bool Refill()
+    public override void Refill(int quantity, float price)
     {
-        if (itemQuantity < itemMaxCapacity)
+        /*if (itemQuantity < itemMaxCapacity)
         {
             itemQuantity = itemMaxCapacity;
             return true;
         }
-        return false;
+        return false;*/
+
+        /*if (itemQuantity + quantity <= itemMaxCapacity)
+        {
+            itemQuantity += quantity;
+            return true;
+        }
+        return false;*/
+
+        int refund = (itemQuantity + quantity) - itemMaxCapacity;
+        itemQuantity = Mathf.Clamp(itemQuantity + quantity, 0, itemMaxCapacity);
+        
+        if (refund > 0)
+        {
+            Actions.OnItemRefund?.Invoke(refund, price);
+        }
     }
 }
