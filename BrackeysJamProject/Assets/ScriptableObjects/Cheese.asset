@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Cheese
   m_EditorClassIdentifier: 
   Name: Cheese
-  icon: {fileID: 0}
+  Icon: {fileID: 0}
+  Price: 75

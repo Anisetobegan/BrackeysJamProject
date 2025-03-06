@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Potatoe
   m_EditorClassIdentifier: 
   Name: Potatoe
-  icon: {fileID: 0}
+  Icon: {fileID: 0}
+  Price: 20

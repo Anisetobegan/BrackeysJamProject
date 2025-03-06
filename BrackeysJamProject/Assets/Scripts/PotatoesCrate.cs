@@ -19,6 +19,16 @@ public class PotatoesCrate : InteractiveObject
         
     }
 
+    private void OnEnable()
+    {
+        Actions.OnItemBought += Refill;
+    }
+
+    private void OnDisable()
+    {
+        Actions.OnItemBought -= Refill;
+    }
+
     public override void OnInteract()
     {
         if (UseItem())
@@ -53,24 +63,24 @@ public class PotatoesCrate : InteractiveObject
 
     public override Image GetItemIcon()
     {
-        return _potatoePrefab.Info.icon;
+        return _potatoePrefab.Info.Icon;
     }
 
-    public override void Refill(int quantity, float price)
+    /*public override void Refill(int quantity, float price)
     {
         /*if (itemQuantity < itemMaxCapacity)
         {
             itemQuantity = itemMaxCapacity;
             return true;
         }
-        return false;*/
+        return false;/*
 
         /*if (itemQuantity + quantity <= itemMaxCapacity)
         {
             itemQuantity += quantity;
             return true;
         }
-        return false;*/
+        return false;/*
 
         int refund = (itemQuantity + quantity) - itemMaxCapacity;
         itemQuantity = Mathf.Clamp(itemQuantity + quantity, 0, itemMaxCapacity);
@@ -78,6 +88,20 @@ public class PotatoesCrate : InteractiveObject
         if (refund > 0)
         {
             Actions.OnItemRefund?.Invoke(refund, price);
+        }
+    }*/
+
+    public override void Refill(IngredientInfo info, int quantity)
+    {
+        if (info == _potatoePrefab.Info)
+        {
+            int refund = (itemQuantity + quantity) - itemMaxCapacity;
+            itemQuantity = Mathf.Clamp(itemQuantity + quantity, 0, itemMaxCapacity);
+
+            if (refund > 0)
+            {
+                Actions.OnItemRefund?.Invoke(refund, _potatoePrefab.Info.Price);
+            }
         }
     }
 }

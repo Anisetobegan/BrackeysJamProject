@@ -3,15 +3,21 @@ using System.Collections.Generic;
 
 public class StoreManager : MonoBehaviour
 {
-    [SerializeField] List<StoreItem> items;
+    [SerializeField] StoreItem storeItemPrefab;
+    [SerializeField] List<IngredientInfo> itemsInfo;
+    [SerializeField] Transform layout;
 
-    void Start()
+    private void Awake()
     {
-        
+        InstantiateStoreItems();
     }
 
-    void Update()
+    public void InstantiateStoreItems()
     {
-        
+        for (int i = 0; i < itemsInfo.Count; i++)
+        {
+            StoreItem newStoreItem = Instantiate(storeItemPrefab, layout);
+            newStoreItem.InitializeStoreItem(itemsInfo[i]);
+        }
     }
 }

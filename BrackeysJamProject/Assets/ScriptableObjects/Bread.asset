@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Bread
   m_EditorClassIdentifier: 
   Name: Bread
-  icon: {fileID: 0}
+  Icon: {fileID: 0}
+  Price: 25

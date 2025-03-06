@@ -46,8 +46,11 @@ public class FinishDish : PickableObject
 
             if (potatoeCrate != null)
             {
-                Potatoe newPotatoe = Instantiate(potatoeCrate.PotatoePrefab, potatoeCrate.transform.position, potatoeCrate.transform.rotation);
-                ingredients.Add(newPotatoe);
+                if (potatoeCrate.UseItem())
+                {
+                    Potatoe newPotatoe = Instantiate(potatoeCrate.PotatoePrefab, potatoeCrate.transform.position, potatoeCrate.transform.rotation);
+                    ingredients.Add(newPotatoe);
+                }
             }
 
             if (table != null)

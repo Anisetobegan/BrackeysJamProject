@@ -5,5 +5,6 @@ using UnityEngine.UI;
 public class IngredientInfo : ScriptableObject
 {
     public string Name;
-    public Image icon;
+    public Image Icon;
+    public float Price;
 }

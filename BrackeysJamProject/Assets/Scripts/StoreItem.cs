@@ -14,6 +14,8 @@ public class StoreItem : MonoBehaviour
     [SerializeField] Image itemIcon;
     [SerializeField] TextMeshProUGUI itemQuantityTMP;
 
+    IngredientInfo storeItemInfo = null;
+
     void Start()
     {
         
@@ -21,11 +23,9 @@ public class StoreItem : MonoBehaviour
 
     private void Awake()
     {
-        itemTotalPrice = itemPrice;
-
-        itemNameTMP.text = itemContainer.GetItemName();
+        /*itemNameTMP.text = itemContainer.GetItemName();
         itemIcon = itemContainer.GetItemIcon();
-        itemPriceTMP.text = itemTotalPrice.ToString();
+        itemPriceTMP.text = itemTotalPrice.ToString();*/
     }
 
     void Update()
@@ -46,7 +46,9 @@ public class StoreItem : MonoBehaviour
                 Debug.Log("You can´t carry anymore");
             }*/
 
-            itemContainer.Refill(itemQuantity, itemPrice);
+            //itemContainer.Refill(itemQuantity, itemPrice);
+
+            Actions.OnItemBought?.Invoke(storeItemInfo, itemQuantity);
         }
         else
         {
@@ -73,5 +75,19 @@ public class StoreItem : MonoBehaviour
             itemTotalPrice = itemPrice * itemQuantity;
             itemPriceTMP.text = itemTotalPrice.ToString();
         }
+    }
+
+    public void InitializeStoreItem(IngredientInfo info)
+    {
+        storeItemInfo = info;
+
+        itemPrice = storeItemInfo.Price;
+        itemIcon = storeItemInfo.Icon;
+
+        itemNameTMP.text = storeItemInfo.Name;
+        itemPriceTMP.text = itemPrice.ToString();
+        itemQuantityTMP.text = itemQuantity.ToString();
+
+        itemTotalPrice = itemPrice;
     }
 }

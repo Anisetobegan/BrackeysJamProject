@@ -31,6 +31,11 @@ public class InteractiveObject : MonoBehaviour, IInteractable
         
     }
 
+    virtual public void Refill(IngredientInfo info, int quantity)
+    {
+
+    }
+
     virtual public string GetItemName()
     {
         return "";
