@@ -1165,17 +1165,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 230198140928511352, guid: 5fea0716d920ff64d8b05c56cffe8955, type: 3}
   m_PrefabInstance: {fileID: 8375122147073296993}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1413109026 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4318185965293918033, guid: 5fea0716d920ff64d8b05c56cffe8955, type: 3}
-  m_PrefabInstance: {fileID: 8375122147073296993}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12e730ef3d4d0c947b7c0f0aff70717e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1525677034 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1549856451024625706, guid: 5d6894135dbec1e4d8b9ae3859590f7e, type: 3}
@@ -2088,17 +2077,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3437475032397674543, guid: 298c0ec436bbae34db54e22bcc478b0a, type: 3}
-      propertyPath: itemContainer
-      value: 
-      objectReference: {fileID: 1413109026}
     - target: {fileID: 4440998131828016365, guid: 298c0ec436bbae34db54e22bcc478b0a, type: 3}
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5118883360225612414, guid: 298c0ec436bbae34db54e22bcc478b0a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -1.2239075
+    - target: {fileID: 4490914766065839873, guid: 298c0ec436bbae34db54e22bcc478b0a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6212612978906502304, guid: 298c0ec436bbae34db54e22bcc478b0a, type: 3}
       propertyPath: m_Pivot.x

@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class StoreItem : MonoBehaviour
 {
-    [SerializeField] InteractiveObject itemContainer;
     [SerializeField] float itemPrice;
     [SerializeField] float itemTotalPrice;
     [SerializeField] int itemQuantity = 1;
