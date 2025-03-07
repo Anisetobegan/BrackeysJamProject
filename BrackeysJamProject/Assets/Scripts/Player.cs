@@ -5,6 +5,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] float _moveSpeed = 5f;
     [SerializeField] float _rotationSpeed = 720f;
+    [SerializeField] float _maxHealth = 100;
+    [SerializeField] float _currentHealth;
 
     [SerializeField] bool _canInteract = false;
 
@@ -23,6 +25,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] Transform _pickablePos = null;
 
+    [SerializeField] HealthBar _healthBar;
+
     Wallet _wallet = new Wallet();
 
     public Transform PickablePos { get => _pickablePos; }
@@ -35,6 +39,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         //_movePosition = transform.position;
+        _currentHealth = _maxHealth;
     }
 
     private void OnEnable()
@@ -74,9 +79,10 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) //Adds money for debug purposes
+        if (Input.GetKeyDown(KeyCode.Space)) //For debug purposes
         {
-            AddMoney(100f);
+            //AddMoney(100f);
+            TakeDamage(5f);
         }
 
         _animator.SetBool("HasPickable", _pickables.Count > 0);
@@ -194,6 +200,24 @@ public class Player : MonoBehaviour
     public void CalculateRefund(int quantity, float price)
     {
         _wallet.AddMoney(price * quantity);
+    }
+
+    public void TakeDamage(float amount)
+    {
+        _currentHealth -= amount;
+        UpdateHealthBar();
+    }
+
+    public void RestoreHealth(float amount)
+    {
+        //_currentHealth += amount;
+        _currentHealth = Mathf.Clamp(_currentHealth + amount, 0, _maxHealth);
+        UpdateHealthBar();
+    }
+
+    public void UpdateHealthBar()
+    {
+        _healthBar.HealthBarUpdate(_currentHealth / _maxHealth);
     }
 
     private void OnTriggerEnter(Collider other)

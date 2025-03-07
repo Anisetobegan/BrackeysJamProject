@@ -500,6 +500,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.019999998, y: 0.020419028, z: 0.01}
   m_Center: {x: -0.0000000027939677, y: -0.00020950766, z: 0.0049999994}
+--- !u!114 &745387468 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5328646888588025960, guid: 298c0ec436bbae34db54e22bcc478b0a, type: 3}
+  m_PrefabInstance: {fileID: 8605208722484639551}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d49be0cb97246443a6263657fb7d8c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &791070928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1553,6 +1564,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8200260985799952522, guid: f6fc8b1bdbca62040b8884a50163ea26, type: 3}
+      propertyPath: _healthBar
+      value: 
+      objectReference: {fileID: 745387468}
+    - target: {fileID: 8200260985799952522, guid: f6fc8b1bdbca62040b8884a50163ea26, type: 3}
       propertyPath: _layer.m_Bits
       value: 72
       objectReference: {fileID: 0}
@@ -2080,10 +2095,6 @@ PrefabInstance:
     - target: {fileID: 4440998131828016365, guid: 298c0ec436bbae34db54e22bcc478b0a, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4490914766065839873, guid: 298c0ec436bbae34db54e22bcc478b0a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6212612978906502304, guid: 298c0ec436bbae34db54e22bcc478b0a, type: 3}
       propertyPath: m_Pivot.x
