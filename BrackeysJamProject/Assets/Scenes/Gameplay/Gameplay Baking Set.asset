@@ -182,6 +182,7 @@ MonoBehaviour:
   scenarios:
     m_Keys:
     - Default
+    - Enemy
     m_Values:
     - sceneHash: 1709455059
       cellDataAsset:
@@ -235,6 +236,79 @@ MonoBehaviour:
       cellProbeOcclusionDataAsset:
         m_AssetGUID: 23690d020d87c5343b751e1088b67d87
         m_StreamableAssetPath: APVStreamingAssets\ab86a418e99f55a4c9bee6a22334eb5b\23690d020d87c5343b751e1088b67d87.bytes
+        m_ElementSize: 32768
+        m_StreamableCellDescs:
+          m_Keys: 090000000c0000000a0000000d00000000000000030000000100000004000000
+          m_Values:
+          - offset: 0
+            elementCount: 1
+          - offset: 32768
+            elementCount: 1
+          - offset: 65536
+            elementCount: 1
+          - offset: 98304
+            elementCount: 1
+          - offset: 131072
+            elementCount: 1
+          - offset: 163840
+            elementCount: 1
+          - offset: 196608
+            elementCount: 1
+          - offset: 229376
+            elementCount: 1
+        m_Asset: {fileID: 0}
+    - sceneHash: 1709455059
+      cellDataAsset:
+        m_AssetGUID: b6673c7f394e65c409154984960905e0
+        m_StreamableAssetPath: APVStreamingAssets\ab86a418e99f55a4c9bee6a22334eb5b\b6673c7f394e65c409154984960905e0.bytes
+        m_ElementSize: 131072
+        m_StreamableCellDescs:
+          m_Keys: 090000000c0000000a0000000d00000000000000030000000100000004000000
+          m_Values:
+          - offset: 0
+            elementCount: 1
+          - offset: 131072
+            elementCount: 1
+          - offset: 262144
+            elementCount: 1
+          - offset: 393216
+            elementCount: 1
+          - offset: 524288
+            elementCount: 1
+          - offset: 655360
+            elementCount: 1
+          - offset: 786432
+            elementCount: 1
+          - offset: 917504
+            elementCount: 1
+        m_Asset: {fileID: 0}
+      cellOptionalDataAsset:
+        m_AssetGUID: 3ca29ab9618fb284b94cc93b2b1aaefb
+        m_StreamableAssetPath: APVStreamingAssets\ab86a418e99f55a4c9bee6a22334eb5b\3ca29ab9618fb284b94cc93b2b1aaefb.bytes
+        m_ElementSize: 131072
+        m_StreamableCellDescs:
+          m_Keys: 090000000c0000000a0000000d00000000000000030000000100000004000000
+          m_Values:
+          - offset: 0
+            elementCount: 1
+          - offset: 131072
+            elementCount: 1
+          - offset: 262144
+            elementCount: 1
+          - offset: 393216
+            elementCount: 1
+          - offset: 524288
+            elementCount: 1
+          - offset: 655360
+            elementCount: 1
+          - offset: 786432
+            elementCount: 1
+          - offset: 917504
+            elementCount: 1
+        m_Asset: {fileID: 0}
+      cellProbeOcclusionDataAsset:
+        m_AssetGUID: fa531a0778bdf8240b936ca9f9d5c2ba
+        m_StreamableAssetPath: APVStreamingAssets\ab86a418e99f55a4c9bee6a22334eb5b\fa531a0778bdf8240b936ca9f9d5c2ba.bytes
         m_ElementSize: 32768
         m_StreamableCellDescs:
           m_Keys: 090000000c0000000a0000000d00000000000000030000000100000004000000
