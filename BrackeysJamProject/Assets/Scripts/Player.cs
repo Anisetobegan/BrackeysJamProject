@@ -73,8 +73,13 @@ public class Player : MonoBehaviour
             {
                 if (!CheckIfStackable())
                 {
-                    _pickables.Peek().Drop();
-                    RemoveFromStack();
+                    if (_pickables.Peek().GetType() == typeof(KitchenKnife))
+                    {
+                        _pickables.Peek().Drop();
+                        RemoveFromStack();
+                        return;
+                    }
+                    _pickables.Peek().OnInteract();
                 }
             }
         }
