@@ -41,7 +41,7 @@ public class InteractiveObject : MonoBehaviour, IInteractable
         return "";
     }
 
-    virtual public Image GetItemIcon()
+    virtual public Sprite GetItemIcon()
     {
         return null;
     }

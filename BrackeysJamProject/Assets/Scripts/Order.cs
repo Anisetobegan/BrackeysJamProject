@@ -111,6 +111,7 @@ public class Order : MonoBehaviour
         _dishComplete = true;
         Debug.Log("Order Completed!");
         //Remove order from the UI
+        OrderManager.Instance.RemoveCompletedOrder(this);
     }
 
     public void DishFailed()

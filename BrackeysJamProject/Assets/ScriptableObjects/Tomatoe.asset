@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Tomatoe
   m_EditorClassIdentifier: 
   Name: Tomatoe
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: e58cdc8d5a8ecc94999350f4164f3195, type: 3}
   Price: 50

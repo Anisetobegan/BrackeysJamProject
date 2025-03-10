@@ -7,10 +7,11 @@ public class StoreItem : MonoBehaviour
     [SerializeField] float itemPrice;
     [SerializeField] float itemTotalPrice;
     [SerializeField] int itemQuantity = 1;
+    Sprite itemIcon;
 
     [SerializeField] TextMeshProUGUI itemNameTMP;
     [SerializeField] TextMeshProUGUI itemPriceTMP;
-    [SerializeField] Image itemIcon;
+    [SerializeField] Image itemImage;
     [SerializeField] TextMeshProUGUI itemQuantityTMP;
 
     IngredientInfo storeItemInfo = null;
@@ -86,6 +87,7 @@ public class StoreItem : MonoBehaviour
         itemNameTMP.text = storeItemInfo.Name;
         itemPriceTMP.text = itemPrice.ToString();
         itemQuantityTMP.text = itemQuantity.ToString();
+        itemImage.sprite = itemIcon;
 
         itemTotalPrice = itemPrice;
     }

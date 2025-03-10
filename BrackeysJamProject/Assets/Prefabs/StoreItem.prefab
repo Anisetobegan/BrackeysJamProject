@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 311818623, guid: 9143c65f3ac9d504887085febb676e5f, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1125,7 +1125,7 @@ MonoBehaviour:
   itemQuantity: 1
   itemNameTMP: {fileID: 2312342448512241730}
   itemPriceTMP: {fileID: 8123062670371585542}
-  itemIcon: {fileID: 2404526417982460070}
+  itemImage: {fileID: 2404526417982460070}
   itemQuantityTMP: {fileID: 2653946952667651364}
 --- !u!1 &6934383317978015158
 GameObject:

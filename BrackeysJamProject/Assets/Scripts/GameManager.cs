@@ -26,7 +26,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
+        //For Debug purposes
+        /*if (Input.GetKeyDown(KeyCode.E))
+        {
+            OrderManager.Instance.PickUpOrder();
+        }*/
     }
 }
 

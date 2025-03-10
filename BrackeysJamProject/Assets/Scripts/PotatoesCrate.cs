@@ -61,7 +61,7 @@ public class PotatoesCrate : InteractiveObject
         return $"{_potatoePrefab.Info.Name}s";
     }
 
-    public override Image GetItemIcon()
+    public override Sprite GetItemIcon()
     {
         return _potatoePrefab.Info.Icon;
     }

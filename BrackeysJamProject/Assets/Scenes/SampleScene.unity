@@ -2092,6 +2092,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 668120177931901594, guid: 298c0ec436bbae34db54e22bcc478b0a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 336.542
+      objectReference: {fileID: 0}
+    - target: {fileID: 668120177931901594, guid: 298c0ec436bbae34db54e22bcc478b0a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -35.994263
+      objectReference: {fileID: 0}
     - target: {fileID: 4440998131828016365, guid: 298c0ec436bbae34db54e22bcc478b0a, type: 3}
       propertyPath: m_Name
       value: Canvas

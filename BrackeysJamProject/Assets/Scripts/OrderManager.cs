@@ -58,4 +58,10 @@ public class OrderManager : MonoBehaviour
         newOrder.InitializeOrder(dishRecipes[index]);*/
         currentOrders.Add(UIManager.Instance.CreateNewOrder(dishRecipes[index]));
     }
+
+    public void RemoveCompletedOrder(Order completedOrder)
+    {
+        currentOrders.Remove(completedOrder);
+        Destroy(completedOrder.gameObject);
+    }
 }
