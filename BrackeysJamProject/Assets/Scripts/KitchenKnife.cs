@@ -41,9 +41,14 @@ public class KitchenKnife : PickableObject
                 table.PrepIngredient();
             }*/
 
-            if (GameManager.Instance.PlayerGet.InteractiveObject.TryGetComponent(out Table table))
+            InteractiveObject interactiveObject = GameManager.Instance.PlayerGet.InteractiveObject;
+
+            if (interactiveObject != null)
             {
-                table.PrepIngredient();
+                if (interactiveObject.TryGetComponent(out Table table))
+                {
+                    table.PrepIngredient();
+                }
             }
         }
     }

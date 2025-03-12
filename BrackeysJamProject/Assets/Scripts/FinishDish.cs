@@ -97,56 +97,61 @@ public class FinishDish : PickableObject
                 }
             }*/
 
-            if (GameManager.Instance.PlayerGet.InteractiveObject.TryGetComponent(out PotatoesCrate potatoeCrate))
-            {
-                if (potatoeCrate.UseItem())
-                {
-                    Potatoe newPotatoe = Instantiate(potatoeCrate.PotatoePrefab, potatoeCrate.transform.position, potatoeCrate.transform.rotation);
-                    ingredients.Add(newPotatoe);
-                }
-            }
+            InteractiveObject interactiveObject = GameManager.Instance.PlayerGet.InteractiveObject;
 
-            if (GameManager.Instance.PlayerGet.InteractiveObject.TryGetComponent(out Table table))
+            if (interactiveObject != null)
             {
-                PickableObject ingredientToPick = null;
-                ingredientToPick = table.PickPreppedIngredient();
-                if (ingredientToPick != null)
+                if (interactiveObject.TryGetComponent(out PotatoesCrate potatoeCrate))
                 {
-                    ingredients.Add(ingredientToPick);
-                }
-            }
-
-            if (GameManager.Instance.PlayerGet.InteractiveObject.TryGetComponent(out Oven oven))
-            {
-                if (oven.IsCooking)
-                {
-                    ingredients = oven.PickCookedIngredients();
-                    oven.FinishCooking();
-                    AddIngredientsToDictionary();
-                }
-                else
-                {
-                    if (ingredients.Count > 0)
+                    if (potatoeCrate.UseItem())
                     {
-                        PickableObject ingredientToAdd = null;
-                        List<PickableObject> reverseList = new List<PickableObject>(ingredients);
-                        reverseList.Reverse();
-                        ingredientToAdd = reverseList[0];
-                        ingredients.Remove(ingredientToAdd);
-
-                        oven.AddIngredient(ingredientToAdd);
-                        ingredientToAdd.Drop();
-
-                        //GameManager.Instance.PlayerGet.RemoveFromStack();
+                        Potatoe newPotatoe = Instantiate(potatoeCrate.PotatoePrefab, potatoeCrate.transform.position, potatoeCrate.transform.rotation);
+                        ingredients.Add(newPotatoe);
                     }
                 }
-            }
 
-            if (GameManager.Instance.PlayerGet.InteractiveObject.TryGetComponent(out Window window))
-            {
-                if (CheckCorrectIngredients())
+                if (interactiveObject.TryGetComponent(out Table table))
                 {
-                    window.OrderComplete();
+                    PickableObject ingredientToPick = null;
+                    ingredientToPick = table.PickPreppedIngredient();
+                    if (ingredientToPick != null)
+                    {
+                        ingredients.Add(ingredientToPick);
+                    }
+                }
+
+                if (interactiveObject.TryGetComponent(out Oven oven))
+                {
+                    if (oven.IsCooking)
+                    {
+                        ingredients = oven.PickCookedIngredients();
+                        oven.FinishCooking();
+                        AddIngredientsToDictionary();
+                    }
+                    else
+                    {
+                        if (ingredients.Count > 0)
+                        {
+                            PickableObject ingredientToAdd = null;
+                            List<PickableObject> reverseList = new List<PickableObject>(ingredients);
+                            reverseList.Reverse();
+                            ingredientToAdd = reverseList[0];
+                            ingredients.Remove(ingredientToAdd);
+
+                            oven.AddIngredient(ingredientToAdd);
+                            ingredientToAdd.Drop();
+
+                            //GameManager.Instance.PlayerGet.RemoveFromStack();
+                        }
+                    }
+                }
+
+                if (interactiveObject.TryGetComponent(out Window window))
+                {
+                    if (CheckCorrectIngredients())
+                    {
+                        window.OrderComplete();
+                    }
                 }
             }
         }

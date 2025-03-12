@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 
@@ -35,7 +36,7 @@ public class Potatoe : PickableObject
 
     public override void OnInteract()
     {
-        Table table = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<Table>();
+        /*Table table = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<Table>();
         PotatoesCrate potatoeCrate = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<PotatoesCrate>();
         Oven oven = GameManager.Instance.PlayerGet.InteractiveObject.GetComponentInParent<Oven>();
 
@@ -58,6 +59,32 @@ public class Potatoe : PickableObject
         {
             oven.AddIngredient(this);
             GameManager.Instance.PlayerGet.RemoveFromStack();
+        }*/
+
+        InteractiveObject interactiveObject = GameManager.Instance.PlayerGet.InteractiveObject;
+
+        if (interactiveObject != null)
+        {
+            if (interactiveObject.TryGetComponent(out Table table))
+            {
+                table.AddIngredient(this);
+                GameManager.Instance.PlayerGet.RemoveFromStack();
+            }
+
+            if (interactiveObject.TryGetComponent(out PotatoesCrate potatoeCrate))
+            {
+                if (potatoeCrate.UseItem())
+                {
+                    Potatoe newPotatoe = Instantiate(potatoeCrate.PotatoePrefab, potatoeCrate.transform.position, potatoeCrate.transform.rotation);
+                    GameManager.Instance.PlayerGet.AddToStack(newPotatoe);
+                }
+            }
+
+            if (interactiveObject.TryGetComponent(out Oven oven))
+            {
+                oven.AddIngredient(this);
+                GameManager.Instance.PlayerGet.RemoveFromStack();
+            }
         }
     }
 
