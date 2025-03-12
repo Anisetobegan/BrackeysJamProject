@@ -1685,6 +1685,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6872583933913355617, guid: bd9c675c8bdbfa44ea3f84d9089357a7, type: 3}
+      propertyPath: _animationTriggerName
+      value: Attack
+      objectReference: {fileID: 0}
     - target: {fileID: 7518165800939299081, guid: bd9c675c8bdbfa44ea3f84d9089357a7, type: 3}
       propertyPath: m_Name
       value: Axe
@@ -2074,10 +2078,6 @@ PrefabInstance:
     - target: {fileID: 7610262593057195777, guid: fa5dad3d6c3b29a4c935d5fb1df0a125, type: 3}
       propertyPath: m_Name
       value: Window
-      objectReference: {fileID: 0}
-    - target: {fileID: 7610262593057195777, guid: fa5dad3d6c3b29a4c935d5fb1df0a125, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -39,7 +39,7 @@ public class FinishDish : PickableObject
         }
         else
         {
-            PotatoesCrate potatoeCrate = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<PotatoesCrate>();
+            /*PotatoesCrate potatoeCrate = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<PotatoesCrate>();
             Table table = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<Table>();
             Oven oven = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<Oven>();
             Window window = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<Window>();
@@ -90,6 +90,59 @@ public class FinishDish : PickableObject
             }
 
             if (window != null)
+            {
+                if (CheckCorrectIngredients())
+                {
+                    window.OrderComplete();
+                }
+            }*/
+
+            if (GameManager.Instance.PlayerGet.InteractiveObject.TryGetComponent(out PotatoesCrate potatoeCrate))
+            {
+                if (potatoeCrate.UseItem())
+                {
+                    Potatoe newPotatoe = Instantiate(potatoeCrate.PotatoePrefab, potatoeCrate.transform.position, potatoeCrate.transform.rotation);
+                    ingredients.Add(newPotatoe);
+                }
+            }
+
+            if (GameManager.Instance.PlayerGet.InteractiveObject.TryGetComponent(out Table table))
+            {
+                PickableObject ingredientToPick = null;
+                ingredientToPick = table.PickPreppedIngredient();
+                if (ingredientToPick != null)
+                {
+                    ingredients.Add(ingredientToPick);
+                }
+            }
+
+            if (GameManager.Instance.PlayerGet.InteractiveObject.TryGetComponent(out Oven oven))
+            {
+                if (oven.IsCooking)
+                {
+                    ingredients = oven.PickCookedIngredients();
+                    oven.FinishCooking();
+                    AddIngredientsToDictionary();
+                }
+                else
+                {
+                    if (ingredients.Count > 0)
+                    {
+                        PickableObject ingredientToAdd = null;
+                        List<PickableObject> reverseList = new List<PickableObject>(ingredients);
+                        reverseList.Reverse();
+                        ingredientToAdd = reverseList[0];
+                        ingredients.Remove(ingredientToAdd);
+
+                        oven.AddIngredient(ingredientToAdd);
+                        ingredientToAdd.Drop();
+
+                        //GameManager.Instance.PlayerGet.RemoveFromStack();
+                    }
+                }
+            }
+
+            if (GameManager.Instance.PlayerGet.InteractiveObject.TryGetComponent(out Window window))
             {
                 if (CheckCorrectIngredients())
                 {

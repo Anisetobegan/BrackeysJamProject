@@ -32,10 +32,10 @@ public class Axe : PickableObject
 
     public override void OnInteract()
     {
-        if (!pickedUp /* && GameManager.Instance.Gamestate == Gamestate.EnemyChasing*/)
+        if (!pickedUp)
         {
             GameManager.Instance.PlayerGet.AddToStack(this);
-            GameManager.Instance.PlayerGet.CanInteract();
+            //GameManager.Instance.PlayerGet.CanInteract();
             ObjectAnimation(GameManager.Instance.PlayerGet.PickablePos.position, pickedUp);
         }
         else

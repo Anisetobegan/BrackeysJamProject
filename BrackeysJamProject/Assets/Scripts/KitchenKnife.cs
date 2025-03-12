@@ -29,14 +29,19 @@ public class KitchenKnife : PickableObject
         if (!pickedUp)
         {
             GameManager.Instance.PlayerGet.AddToStack(this);
-            GameManager.Instance.PlayerGet.CanInteract();
+            //GameManager.Instance.PlayerGet.CanInteract();
             ObjectAnimation(GameManager.Instance.PlayerGet.PickablePos.position, pickedUp);
         }
         else
         {
-            Table table = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<Table>();
+            /*Table table = GameManager.Instance.PlayerGet.InteractiveObject.GetComponent<Table>();
 
             if (table != null)
+            {
+                table.PrepIngredient();
+            }*/
+
+            if (GameManager.Instance.PlayerGet.InteractiveObject.TryGetComponent(out Table table))
             {
                 table.PrepIngredient();
             }

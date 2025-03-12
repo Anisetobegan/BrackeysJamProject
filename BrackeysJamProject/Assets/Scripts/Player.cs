@@ -73,14 +73,17 @@ public class Player : MonoBehaviour
             {
                 if (!CheckIfStackable())
                 {
-                    if (_pickables.Peek().GetType() == typeof(KitchenKnife))
-                    {
-                        _pickables.Peek().Drop();
-                        RemoveFromStack();
-                        return;
-                    }
                     _pickables.Peek().OnInteract();
                 }
+            }
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (!CheckIfStackable())
+            {
+                _pickables.Peek().Drop();
+                RemoveFromStack();
             }
         }
 
@@ -235,7 +238,11 @@ public class Player : MonoBehaviour
         else if (other.gameObject.layer == LayerMask.NameToLayer("Pickable"))
         {
             _canInteract = true;
-            _interactable = other.GetComponent<PickableObject>();
+
+            if (_interactable == null)
+            {
+                _interactable = other.GetComponent<PickableObject>();
+            }
             /*
             //IPickable pickable = other.GetComponent<IPickable>();
             PickableObject pickable = other.GetComponent<PickableObject>();
@@ -274,14 +281,22 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
         {
-            _canInteract = false;
             _interactiveObject.OnTriggerLeave();
             _interactiveObject = null;
+
+            if (_pickables.Count == 0)
+            {
+                _canInteract = false;
+            }
         }
+
         else if (other.gameObject.layer == LayerMask.NameToLayer("Pickable"))
         {
-            _canInteract = false;
-            _interactable = null;
+            if (_pickables.Count == 0)
+            {
+                _canInteract = false;
+                _interactable = null;
+            }
         }
     }
 }
