@@ -69,7 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ingredientInfo: {fileID: 0}
   _preppedIngredientPrefab: {fileID: 0}
-  _animationTriggerName: 
+  _animationTriggerName: Attack
 --- !u!1001 &1610987266289906930
 PrefabInstance:
   m_ObjectHideFlags: 0
