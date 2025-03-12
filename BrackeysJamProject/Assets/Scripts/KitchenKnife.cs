@@ -15,7 +15,7 @@ public class KitchenKnife : PickableObject
         type = ObjectType.Object;
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (pickedUp)
         {

@@ -16,7 +16,7 @@ public class Axe : PickableObject
         type = ObjectType.Object;
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (durability == 0)
         {
@@ -26,7 +26,7 @@ public class Axe : PickableObject
         if (pickedUp)
         {
             transform.position = GameManager.Instance.PlayerGet.PickablePos.position;
-            transform.rotation = GameManager.Instance.PlayerGet.PickablePos.rotation;
+            transform.rotation = GameManager.Instance.PlayerGet.PickablePos.rotation * Quaternion.Euler(90, 0, 0);
         }
     }
 

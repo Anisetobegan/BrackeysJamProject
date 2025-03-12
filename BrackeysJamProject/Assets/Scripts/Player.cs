@@ -93,7 +93,9 @@ public class Player : MonoBehaviour
             TakeDamage(5f);
         }
 
-        _animator.SetBool("HasPickable", _pickables.Count > 0);
+        bool hasAxe = _interactable is Axe;
+        _animator.SetBool("HasAxe", hasAxe);
+        _animator.SetBool("HasPickable", _pickables.Count > 0 && !hasAxe);
     }
 
     private void FixedUpdate()
