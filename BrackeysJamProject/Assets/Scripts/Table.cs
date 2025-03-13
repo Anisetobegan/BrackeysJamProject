@@ -2,6 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
+using DG.Tweening;
 
 public class Table : InteractiveObject
 {
@@ -9,6 +10,7 @@ public class Table : InteractiveObject
     [SerializeField] List<PickableObject> preppedIngredients = new List<PickableObject>();
 
     [SerializeField] Transform pickablePos;
+    [SerializeField] Transform preppedPickablePos;
 
     void Start()
     {
@@ -68,8 +70,9 @@ public class Table : InteractiveObject
             ingredientToPrep = reversedList[0];
             ingredientToPrep.IngredientPrepped();            
 
-            PickableObject preppedIngredient = Instantiate(ingredientToPrep.PreppedIngredientPrefab, transform.position, transform.rotation);
+            PickableObject preppedIngredient = Instantiate(ingredientToPrep.PreppedIngredientPrefab, ingredientToPrep.transform.position, Quaternion.identity);
             preppedIngredients.Add(preppedIngredient);
+            preppedIngredient.ObjectAnimation(preppedPickablePos.position, true);
 
             if (ingredientToPrep.PrepAmount == 0)
             {

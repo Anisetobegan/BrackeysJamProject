@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ingredientInfo: {fileID: 11400000, guid: b6b66f3f5e0728f41970ba2c00a87e89, type: 2}
   _preppedIngredientPrefab: {fileID: 0}
+  _animationTriggerName: 
 --- !u!1001 &1856721196284240700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8207f1545087c4048978be7663a3707e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.683
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8207f1545087c4048978be7663a3707e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -122,6 +123,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8207f1545087c4048978be7663a3707e, type: 3}
       propertyPath: m_Name
       value: food_ingredient_potato_sliced
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8207f1545087c4048978be7663a3707e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1030463644456223853, guid: 8207f1545087c4048978be7663a3707e, type: 3}
       propertyPath: m_IsActive

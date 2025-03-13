@@ -108,9 +108,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a32b82550f0e3e4b98f4bd728e62912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemQuantity: 0
+  itemMaxCapacity: 0
   ingredientsToPrep: []
   preppedIngredients: []
   pickablePos: {fileID: 7865121790793171208}
+  preppedPickablePos: {fileID: 3815673245258564969}
 --- !u!65 &8464800613023337754
 BoxCollider:
   m_ObjectHideFlags: 0
