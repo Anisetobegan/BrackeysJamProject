@@ -3,11 +3,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Oven : InteractiveObject
+public class CookingInteractable : InteractiveObject
 {
     [SerializeField] List<IngredientInfo> allowedIngredients;
 
-    List<PickableObject> preppedIngredients = new List<PickableObject>();
+    [SerializeField] List<PickableObject> preppedIngredients = new List<PickableObject>();
     [SerializeField] GameObject cookingProgressUI;
     [SerializeField] Image circleBar;
     [SerializeField] TextMeshProUGUI donenessTMP;
@@ -17,7 +17,7 @@ public class Oven : InteractiveObject
     float timer;
     bool isCooking = false;
 
-    public bool IsCooking {  get { return isCooking; } }
+    public bool IsCooking { get { return isCooking; } }
 
     enum Doneness
     {
@@ -48,7 +48,7 @@ public class Oven : InteractiveObject
                 UpdateCircleBar();
                 timerTMP.text = string.Format("{0:0}:{1:00}", 0, timer);
             }
-            else if(timer <= 0 && doneness != Doneness.Burnt)
+            else if (timer <= 0 && doneness != Doneness.Burnt)
             {
                 timer = timeToChangeDoneness;
                 UpdateCircleBar();
@@ -77,7 +77,7 @@ public class Oven : InteractiveObject
 
     public void AddIngredient(PickableObject pickable)
     {
-        if(CheckAllowedIngredient(pickable.Info))
+        if (CheckAllowedIngredient(pickable.Info))
         {
             preppedIngredients.Add(pickable);
             pickable.ObjectAnimation(transform.position, pickable.IsPickedUp);

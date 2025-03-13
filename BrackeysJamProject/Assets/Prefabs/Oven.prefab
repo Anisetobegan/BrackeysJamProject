@@ -395,9 +395,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2858476686058002626}
-  - component: {fileID: 5324997857684815114}
   - component: {fileID: 6060122325645331564}
-  m_Layer: 0
+  - component: {fileID: 7136714632033709920}
+  m_Layer: 3
   m_Name: Oven
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,23 +421,6 @@ Transform:
   - {fileID: 6135999355005067846}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5324997857684815114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6275262464686550839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecea6313beb8ad444a3da1d1b772fe95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  preppedIngredients: []
-  cookingProgressUI: {fileID: 2801054227995579740}
-  circleBar: {fileID: 6304397286544772926}
-  donenessTMP: {fileID: 2339146660679443786}
-  timerTMP: {fileID: 7445656737735378249}
 --- !u!65 &6060122325645331564
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -459,6 +442,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.116023, y: 3.0232544, z: 2.9796753}
   m_Center: {x: -1.5580115, y: 1.53742, z: 0.0052170753}
+--- !u!114 &7136714632033709920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6275262464686550839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ce91a0ca6027544a62df9117123204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemQuantity: 0
+  itemMaxCapacity: 0
+  allowedIngredients:
+  - {fileID: 11400000, guid: 5bce507793aa0894ca6ee5f87649fa99, type: 2}
+  preppedIngredients: []
+  cookingProgressUI: {fileID: 2801054227995579740}
+  circleBar: {fileID: 6304397286544772926}
+  donenessTMP: {fileID: 2339146660679443786}
+  timerTMP: {fileID: 7445656737735378249}
 --- !u!1 &6755727637047061921
 GameObject:
   m_ObjectHideFlags: 0

@@ -80,9 +80,9 @@ public class Potatoe : PickableObject
                 }
             }
 
-            if (interactiveObject.TryGetComponent(out Oven oven))
+            if (interactiveObject.TryGetComponent(out CookingInteractable cookingInteractable))
             {
-                oven.AddIngredient(this);
+                cookingInteractable.AddIngredient(this);
                 GameManager.Instance.PlayerGet.RemoveFromStack();
             }
         }

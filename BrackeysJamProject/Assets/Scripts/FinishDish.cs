@@ -120,12 +120,12 @@ public class FinishDish : PickableObject
                     }
                 }
 
-                if (interactiveObject.TryGetComponent(out Oven oven))
+                if (interactiveObject.TryGetComponent(out CookingInteractable cookingInteractable))
                 {
-                    if (oven.IsCooking)
+                    if (cookingInteractable.IsCooking)
                     {
-                        ingredients = oven.PickCookedIngredients();
-                        oven.FinishCooking();
+                        ingredients = cookingInteractable.PickCookedIngredients();
+                        cookingInteractable.FinishCooking();
                         AddIngredientsToDictionary();
                     }
                     else
@@ -138,7 +138,7 @@ public class FinishDish : PickableObject
                             ingredientToAdd = reverseList[0];
                             ingredients.Remove(ingredientToAdd);
 
-                            oven.AddIngredient(ingredientToAdd);
+                            cookingInteractable.AddIngredient(ingredientToAdd);
                             ingredientToAdd.Drop();
 
                             //GameManager.Instance.PlayerGet.RemoveFromStack();
@@ -151,6 +151,11 @@ public class FinishDish : PickableObject
                     if (CheckCorrectIngredients())
                     {
                         window.OrderComplete();
+                    }
+                    else
+                    {
+                        Debug.Log("Order failed");
+                        //Enemy Spawns
                     }
                 }
             }
