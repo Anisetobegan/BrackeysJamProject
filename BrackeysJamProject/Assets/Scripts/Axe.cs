@@ -4,6 +4,8 @@ public class Axe : PickableObject
 {
     int durability;
 
+    [SerializeField] private SkinnedMeshRenderer rend;
+
     void Awake()
     {
         stackable = false;
@@ -27,6 +29,8 @@ public class Axe : PickableObject
         {
             transform.position = GameManager.Instance.PlayerGet.PickablePos.position;
             transform.rotation = GameManager.Instance.PlayerGet.PickablePos.rotation * Quaternion.Euler(90, 0, 0);
+
+            rend.SetBlendShapeWeight(0, GameManager.Instance.PlayerGet.SmearDriver);
         }
     }
 

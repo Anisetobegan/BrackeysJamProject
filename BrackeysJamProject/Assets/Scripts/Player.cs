@@ -36,6 +36,9 @@ public class Player : MonoBehaviour
     public InteractiveObject InteractiveObject { get { return _interactiveObject; } }
     public float Money { get { return _wallet.Money; } }
 
+    [SerializeField] private Transform _smearDriver;
+    public float SmearDriver => (_smearDriver.localPosition.y - 0.5f) * 100;
+
     void Start()
     {
         //_movePosition = transform.position;
