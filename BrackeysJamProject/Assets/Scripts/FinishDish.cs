@@ -151,11 +151,13 @@ public class FinishDish : PickableObject
                     if (CheckCorrectIngredients())
                     {
                         window.OrderComplete();
+                        //if gamestate is Enemy Incoming, change it to Normal
                     }
                     else
                     {
                         Debug.Log("Order failed");
                         //Enemy Spawns
+                        window.OrderFailed();
                     }
                 }
             }

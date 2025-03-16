@@ -6,6 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 public class Enemy : MonoBehaviour
 {
     float _minAttackDistance = 2f;
+    bool _enemyAlive = false;
 
     [SerializeField] NavMeshAgent _agent;
 
@@ -22,9 +23,16 @@ public class Enemy : MonoBehaviour
 
     IEnumerator _enumerator = null;
 
+    public bool EnemyAlive {  get { return _enemyAlive; } }
+
     void Start()
     {
         
+    }
+
+    private void OnEnable()
+    {
+        _enemyAlive = true;
     }
 
     void Update()
@@ -56,6 +64,8 @@ public class Enemy : MonoBehaviour
                 break;
 
             case State.Dead:
+                _enemyAlive = false;
+                GameManager.Instance.ChangeGameState(GameManager.GameState.Normal);
                 break;
         }
     }

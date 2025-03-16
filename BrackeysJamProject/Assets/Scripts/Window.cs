@@ -22,4 +22,9 @@ public class Window : InteractiveObject
     {
         OrderManager.Instance.CurrentOrders[0].DishCompleted();
     }
+
+    public void OrderFailed()
+    {
+        OrderManager.Instance.CurrentOrders[0].DishFailed();
+    }
 }

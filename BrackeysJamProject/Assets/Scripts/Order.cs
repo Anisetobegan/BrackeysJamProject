@@ -111,12 +111,14 @@ public class Order : MonoBehaviour
         _dishComplete = true;
         Debug.Log("Order Completed!");
         //Remove order from the UI
-        OrderManager.Instance.RemoveCompletedOrder(this);
+        OrderManager.Instance.RemoveOrder(this);
     }
 
     public void DishFailed()
     {
         //Spawn Enemy
+        GameManager.Instance.ChangeGameState(GameManager.GameState.EnemyChasing);
         //Remove order from the UI
+        OrderManager.Instance.RemoveOrder(this);
     }
 }
