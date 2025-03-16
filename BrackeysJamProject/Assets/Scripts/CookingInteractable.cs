@@ -19,22 +19,11 @@ public class CookingInteractable : InteractiveObject
 
     public bool IsCooking { get { return isCooking; } }
 
-    enum Doneness
-    {
-        Raw,
-        Rare,
-        Medium,
-        WellDone,
-        Burnt
-    }
-    Doneness doneness;
-
     void Start()
     {
-        doneness = Doneness.Rare;
         timer = timeToChangeDoneness;
         timerTMP.text = string.Format("{0:0}:{1:00}", 0, timer);
-        donenessTMP.text = doneness.ToString();
+        donenessTMP.text = PickableObject.Doneness.Raw.ToString();
         UpdateCircleBar();
     }
 
@@ -42,19 +31,19 @@ public class CookingInteractable : InteractiveObject
     {
         if (isCooking)
         {
-            if (timer > 0 && doneness != Doneness.Burnt)
+            if (timer > 0 && preppedIngredients[0].doneness != PickableObject.Doneness.Burnt)
             {
                 timer -= Time.deltaTime;
                 UpdateCircleBar();
                 timerTMP.text = string.Format("{0:0}:{1:00}", 0, timer);
             }
-            else if (timer <= 0 && doneness != Doneness.Burnt)
+            else if (timer <= 0 && preppedIngredients[0].doneness != PickableObject.Doneness.Burnt)
             {
                 timer = timeToChangeDoneness;
                 UpdateCircleBar();
                 timerTMP.text = string.Format("{0:0}:{1:00}", 0, timer);
-                doneness++;
-                donenessTMP.text = doneness.ToString();
+                ChangeIngredientsDoneness();
+                donenessTMP.text = preppedIngredients[0].doneness.ToString();
             }
             else
             {
@@ -96,15 +85,14 @@ public class CookingInteractable : InteractiveObject
             cookedIngredients.Add(ingredientToPick);
             ingredientToPick.ObjectAnimation(GameManager.Instance.PlayerGet.transform.position, ingredientToPick.IsPickedUp);
         }
-        preppedIngredients.Clear();
 
         isCooking = false;
         timer = timeToChangeDoneness;
         timerTMP.text = string.Format("{0:0}:{1:00}", 0, timer);
         UpdateCircleBar();
-        Debug.Log(doneness);
-        doneness = Doneness.Raw;
-        donenessTMP.text = doneness.ToString();
+        Debug.Log(preppedIngredients[0].doneness);
+
+        preppedIngredients.Clear();
         return cookedIngredients;
     }
 
@@ -114,10 +102,9 @@ public class CookingInteractable : InteractiveObject
         {
             isCooking = true;
             cookingProgressUI.SetActive(true);
-            doneness = Doneness.Rare;
             timer = timeToChangeDoneness;
             timerTMP.text = string.Format("{0:0}:{1:00}", 0, timer);
-            donenessTMP.text = doneness.ToString();
+            donenessTMP.text = preppedIngredients[0].doneness.ToString();
             UpdateCircleBar();
             Debug.Log("Started cooking");
         }
@@ -154,5 +141,16 @@ public class CookingInteractable : InteractiveObject
             }
         }
         return false;
+    }
+
+    public void ChangeIngredientsDoneness()
+    {
+        if (preppedIngredients.Count > 0)
+        {
+            foreach (var ingredient in preppedIngredients)
+            {
+                ingredient.ChangeDoneness();
+            }
+        }
     }
 }

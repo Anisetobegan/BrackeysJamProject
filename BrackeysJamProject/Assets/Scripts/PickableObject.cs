@@ -24,6 +24,16 @@ public class PickableObject : MonoBehaviour, IInteractable
     }
     protected ObjectType type;
 
+    public enum Doneness
+    {
+        Raw,
+        Rare,
+        Medium,
+        WellDone,
+        Burnt
+    }
+    public Doneness doneness;
+
     public bool IsStackable { get { return stackable; } }
     public bool IsPickedUp { get { return pickedUp; } }
     public int PrepAmount { get { return prepAmount; } }
@@ -92,5 +102,10 @@ public class PickableObject : MonoBehaviour, IInteractable
     virtual public void OnInteract()
     {
         
+    }
+
+    public void ChangeDoneness()
+    {
+        doneness++;
     }
 }
