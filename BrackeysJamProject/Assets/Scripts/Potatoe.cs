@@ -71,12 +71,21 @@ public class Potatoe : PickableObject
                 GameManager.Instance.PlayerGet.RemoveFromStack();
             }
 
-            if (interactiveObject.TryGetComponent(out PotatoesCrate potatoeCrate))
+            /*if (interactiveObject.TryGetComponent(out PotatoesCrate potatoeCrate))
             {
                 if (potatoeCrate.UseItem())
                 {
                     Potatoe newPotatoe = Instantiate(potatoeCrate.PotatoePrefab, potatoeCrate.transform.position, potatoeCrate.transform.rotation);
                     GameManager.Instance.PlayerGet.AddToStack(newPotatoe);
+                }
+            }*/
+
+            if (interactiveObject.TryGetComponent(out IngredientContainer ingredientContainer))
+            {
+                if (ingredientContainer.UseItem())
+                {
+                    PickableObject newIngredient = Instantiate(ingredientContainer.IngredientPrefab, ingredientContainer.transform.position, ingredientContainer.transform.rotation);
+                    GameManager.Instance.PlayerGet.AddToStack(newIngredient);
                 }
             }
 

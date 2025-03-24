@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 230198140928511352}
-  - component: {fileID: 4318185965293918033}
   - component: {fileID: 4199699537993124422}
+  - component: {fileID: -8274198581715890894}
   m_Layer: 3
   m_Name: PotatoesCrate
   m_TagString: Untagged
@@ -34,19 +34,6 @@ Transform:
   - {fileID: 176788572030803255}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4318185965293918033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314779505996668400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12e730ef3d4d0c947b7c0f0aff70717e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _potatoePrefab: {fileID: 7105088878395966225, guid: 53226687bb3171f42bbcb106473726f0, type: 3}
 --- !u!65 &4199699537993124422
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68,6 +55,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.4404688, y: 1, z: 2.5595808}
   m_Center: {x: 1.6010432, y: 0, z: 0.07630205}
+--- !u!114 &-8274198581715890894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314779505996668400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830843380368e364b9b6cdc936151bc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemQuantity: 25
+  itemMaxCapacity: 0
+  _ingredientPrefab: {fileID: 7105088878395966225, guid: 53226687bb3171f42bbcb106473726f0, type: 3}
 --- !u!1001 &431973072359389916
 PrefabInstance:
   m_ObjectHideFlags: 0
