@@ -1,10 +1,15 @@
+using System.Collections;
 using UnityEngine;
 
 public class Axe : PickableObject
 {
     int durability;
+    float damage = 40f;
+    float timeOfActiveHitbox = 0.5f;
 
     [SerializeField] private SkinnedMeshRenderer rend;
+
+    [SerializeField] Hitbox attackHitbox;
 
     void Awake()
     {
@@ -16,6 +21,11 @@ public class Axe : PickableObject
         trigger = GetComponent<Collider>();
 
         type = ObjectType.Object;
+    }
+
+    private void OnEnable()
+    {
+        attackHitbox.InitializeHitbox(damage);
     }
 
     void LateUpdate()
@@ -46,6 +56,7 @@ public class Axe : PickableObject
         {
             //Player Attacks
             Debug.Log("Attacked");
+            StartCoroutine(ActivateAttackHitbox());
         }
     }
 
@@ -55,5 +66,12 @@ public class Axe : PickableObject
         GameManager.Instance.PlayerGet.RemoveFromStack();
         Destroy(gameObject);
         //Now you can buy an Axe again
+    }
+
+    IEnumerator ActivateAttackHitbox()
+    {
+        attackHitbox.gameObject.SetActive(true);
+        yield return new WaitForSeconds(timeOfActiveHitbox);
+        attackHitbox.gameObject.SetActive(false);
     }
 }

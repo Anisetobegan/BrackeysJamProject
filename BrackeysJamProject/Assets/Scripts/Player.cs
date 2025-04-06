@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamagable
 {
     [SerializeField] float _moveSpeed = 5f;
     [SerializeField] float _rotationSpeed = 720f;
@@ -303,5 +303,10 @@ public class Player : MonoBehaviour
                 _interactable = null;
             }
         }
+    }
+
+    public void Damage(float damage)
+    {
+        TakeDamage(damage);
     }
 }

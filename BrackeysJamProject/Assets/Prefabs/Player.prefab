@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 912422829621132018}
   - component: {fileID: 3849971170576780325}
   - component: {fileID: 8200260985799952522}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
   _rb: {fileID: 3849971170576780325}
   _layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 72
   _animator: {fileID: 1959831737101665910}
   _pickablePos: {fileID: 4018665359311996526}
   _healthBar: {fileID: 0}

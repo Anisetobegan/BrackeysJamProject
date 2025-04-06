@@ -3,12 +3,18 @@ using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamagable
 {
     float _minAttackDistance = 2f;
+    float _damage = 100f;
     bool _enemyAlive = false;
 
+    [SerializeField] float _maxHealth = 100;
+    [SerializeField] float _currentHealth;
+
     [SerializeField] NavMeshAgent _agent;
+
+    [SerializeField] Hitbox _attackHitbox;
 
     Vector3 _target;
 
@@ -33,10 +39,17 @@ public class Enemy : MonoBehaviour
     private void OnEnable()
     {
         _enemyAlive = true;
+        _currentHealth = _maxHealth;
+        _attackHitbox.InitializeHitbox(_damage);
     }
 
     void Update()
     {
+        if (_currentHealth <= 0)
+        {
+            _state = State.Dead;
+        }
+
         switch (_state)
         {
             case State.Chasing:
@@ -56,6 +69,7 @@ public class Enemy : MonoBehaviour
             case State.Attacking:
 
                 Debug.Log("Player Attacked");
+                StartCoroutine(ActivateAttackHitbox());
                 _state = State.Waiting;
 
                 break;
@@ -66,6 +80,7 @@ public class Enemy : MonoBehaviour
             case State.Dead:
                 _enemyAlive = false;
                 GameManager.Instance.ChangeGameState(GameManager.GameState.Normal);
+                Destroy(gameObject);
                 break;
         }
     }
@@ -74,5 +89,27 @@ public class Enemy : MonoBehaviour
     {
         Vector3 offset = _target + (transform.position - _target).normalized;
         _agent.SetDestination(offset);
+    }
+
+    public void TakeDamage(float amount)
+    {
+        _currentHealth -= amount;
+        if (_currentHealth < 0)
+        {
+            _currentHealth = 0;
+        }
+        //Apply knockback
+    }
+
+    public void Damage(float damage)
+    {
+        TakeDamage(damage);
+    }
+
+    IEnumerator ActivateAttackHitbox()
+    {
+        _attackHitbox.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        _attackHitbox.gameObject.SetActive(false);
     }
 }

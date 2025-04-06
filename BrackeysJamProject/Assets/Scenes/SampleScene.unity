@@ -1522,10 +1522,6 @@ PrefabInstance:
       propertyPath: _healthBar
       value: 
       objectReference: {fileID: 745387468}
-    - target: {fileID: 8200260985799952522, guid: f6fc8b1bdbca62040b8884a50163ea26, type: 3}
-      propertyPath: _layer.m_Bits
-      value: 72
-      objectReference: {fileID: 0}
     - target: {fileID: 8277183584125688363, guid: f6fc8b1bdbca62040b8884a50163ea26, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.69
